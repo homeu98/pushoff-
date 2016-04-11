@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{FE0F40EA-807D-816E-6E96-98D24AB16B5E}") = "BouncyGame", "Assembly-CSharp.csproj", "{C68C857D-FFA9-FDBE-4D40-4A25D19A0ABF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C68C857D-FFA9-FDBE-4D40-4A25D19A0ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C68C857D-FFA9-FDBE-4D40-4A25D19A0ABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C68C857D-FFA9-FDBE-4D40-4A25D19A0ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C68C857D-FFA9-FDBE-4D40-4A25D19A0ABF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

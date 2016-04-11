@@ -3,6 +3,7 @@ using System.Collections;
 
 public class gettingHit : MonoBehaviour {
 	Rigidbody rb;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponentInParent<Rigidbody> ();
@@ -13,8 +14,11 @@ public class gettingHit : MonoBehaviour {
 	
 	}
 
-	void GetHurt(float damage){
-		rb.AddExplosionForce (damage, transform.position, 0.3f,.8f, ForceMode.Impulse);
-		rb.AddForce (transform.forward * damage *10f);
+	void BackGetHurt(float damage){
+		//rb.AddExplosionForce (5f, transform.position, 0.1f, 0.5f, ForceMode.Impulse);
+		rb.AddForce (transform.forward * (damage+100f) );
 	}
+		
+
+
 }

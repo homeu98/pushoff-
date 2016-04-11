@@ -6,7 +6,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{27D26F80-FD04-F5D5-8755-318086D4E218}</ProjectGuid>
+    <ProjectGuid>{C68C857D-FFA9-FDBE-4D40-4A25D19A0ABF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -46,9 +46,14 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\CameraTricker.cs" />
+     <Compile Include="Assets\EmeryManager.cs" />
+     <Compile Include="Assets\FrontgettingHit.cs" />
      <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\Jump.cs" />
+     <Compile Include="Assets\Grid.cs" />
+     <Compile Include="Assets\Looper.cs" />
+     <Compile Include="Assets\StandalonePlayer.cs" />
      <Compile Include="Assets\VirtualJoystick.cs" />
+     <Compile Include="Assets\doublePlay\Script\Jump.cs" />
      <Compile Include="Assets\gettingHit.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
