@@ -38,16 +38,17 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Unity3D/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Unity3D/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\BigFoot.cs" />
-     <Compile Include="Assets\Boar.cs" />
      <Compile Include="Assets\CameraTricker.cs" />
+     <Compile Include="Assets\Enemies\Big Foot\BigFoot.cs" />
+     <Compile Include="Assets\Enemies\Boar\Boar.cs" />
+     <Compile Include="Assets\Enemies\deathScript.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Grid.cs" />
      <Compile Include="Assets\Looper.cs" />
@@ -57,10 +58,10 @@
      <Compile Include="Assets\doublePlay\Script\Jump.cs" />
      <Compile Include="Assets\doublePlay\Script\gettingHit.cs" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

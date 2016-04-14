@@ -39,7 +39,7 @@ public class Boar : MonoBehaviour {
 		}
 		if(other.collider.CompareTag("back")){
 			print ("OK");
-			StandalonePlayer.IsKilled = true;
+			other.collider.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 

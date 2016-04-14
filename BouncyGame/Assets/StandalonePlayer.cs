@@ -74,6 +74,9 @@ public class StandalonePlayer : MonoBehaviour {
 			other.collider.SendMessage ("FrontGetHurt", damage , SendMessageOptions.DontRequireReceiver);
 		}
 
+
+		other.gameObject.SendMessage ("tookDamage", null, SendMessageOptions.DontRequireReceiver);
+
 	}
 
 	/*public void Crouch(bool IsCrouch){
@@ -95,5 +98,14 @@ public void StartMoving(float thrustForce){
 		transform.localEulerAngles += Vector3.up * HorizontalInput;
 	}
 
- 
+
+	//This is the method to send when enemies hits the player, this is also the method to player player's death animation.
+
+	void die(){
+
+		print ("deadalready");
+		Destroy (this.gameObject);
+
+	}
+
 }
