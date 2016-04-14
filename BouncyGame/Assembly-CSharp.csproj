@@ -45,16 +45,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BigFoot.cs" />
+     <Compile Include="Assets\Boar.cs" />
      <Compile Include="Assets\CameraTricker.cs" />
-     <Compile Include="Assets\EmeryManager.cs" />
-     <Compile Include="Assets\FrontgettingHit.cs" />
      <Compile Include="Assets\GameManager.cs" />
      <Compile Include="Assets\Grid.cs" />
      <Compile Include="Assets\Looper.cs" />
      <Compile Include="Assets\StandalonePlayer.cs" />
      <Compile Include="Assets\VirtualJoystick.cs" />
+     <Compile Include="Assets\doublePlay\Script\FrontgettingHit.cs" />
      <Compile Include="Assets\doublePlay\Script\Jump.cs" />
-     <Compile Include="Assets\gettingHit.cs" />
+     <Compile Include="Assets\doublePlay\Script\gettingHit.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

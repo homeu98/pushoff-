@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class StandalonePlayer : MonoBehaviour {
 	//public float pressure=10f;
 //	public float thrustForce = 3f;
+	public static bool IsKilled = false;
 	public float damage = 5f;
 	//public float RotateSensitivity=90f;
 	public static Vector3 direction;
@@ -49,10 +50,7 @@ public class StandalonePlayer : MonoBehaviour {
 */
 
 
-	void FixedUpdate( ){
 
-			
-	}
 
 
 
@@ -84,8 +82,8 @@ public class StandalonePlayer : MonoBehaviour {
 
 
 public void StartMoving(float thrustForce){
-		rb.MovePosition (rb.position + transform.forward * thrustForce);
-
+	//	rb.MovePosition (rb.position + transform.forward * thrustForce);
+		rb.AddForce(transform.forward  * thrustForce);
 	}
 
 	public void StartRotation(float HorizontalInput){
