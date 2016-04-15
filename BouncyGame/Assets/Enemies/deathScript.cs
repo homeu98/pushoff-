@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class deathScript : MonoBehaviour {
+public  class deathScript : MonoBehaviour {
 
 	Animator anim;
 	GameObject Anim;
