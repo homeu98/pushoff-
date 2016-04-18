@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MoveOnPathScript : MonoBehaviour {
 
-	public EditorPathSCript PathToFollow;
+	 EditorPathSCript PathToFollow;
 
 	public int CurrentWayPointID = 0;
 	public float speed=2f;
@@ -11,13 +11,15 @@ public class MoveOnPathScript : MonoBehaviour {
 	public string pathName;
 
 	float reachDistance = 1f;
-	Vector3 last_pos;
+	//Vector3 last_pos;
 	Vector3 current_pos;
 	// Use this for initialization
+
+
 	void Start () {
 		PathToFollow = GameObject.Find (pathName).GetComponent<EditorPathSCript> ();
 
-		last_pos = transform.position;
+		//last_pos = transform.position;
 	}
 	
 	// Update is called once per frame

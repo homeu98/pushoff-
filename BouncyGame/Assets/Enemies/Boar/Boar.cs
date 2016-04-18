@@ -37,7 +37,7 @@ public class Boar : MonoBehaviour {
 			IsDead = true;
 			rb.isKinematic = true;
 		}
-		if(other.collider.CompareTag("back")){
+		if(other.collider.CompareTag("Player")){
 			print ("OK");
 			other.collider.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
 		}

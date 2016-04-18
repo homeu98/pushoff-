@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class EditorPathSCript : MonoBehaviour {
+public  class EditorPathSCript : MonoBehaviour {
 
 
 	public Color lineColor = Color.white;
@@ -11,7 +11,7 @@ public class EditorPathSCript : MonoBehaviour {
 	Transform[] theArray;
 
 	void Awake(){
-		transform.FindChild ("PlayerTransform").SetAsLastSibling ();
+		//transform.FindChild ("PlayerTransform").SetAsLastSibling ();
 	}
 
 	void OnDrawGizmos(){

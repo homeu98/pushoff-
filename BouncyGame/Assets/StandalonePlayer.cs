@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class StandalonePlayer : MonoBehaviour {
-	//public float pressure=10f;
+	public float pressure=10f;
+	//public float MinPressure=3f;
 //	public float thrustForce = 3f;
 	public static bool IsKilled = false;
-	public float damage = 5f;
+
 	//public float RotateSensitivity=90f;
 	public static Vector3 direction;
 
@@ -17,14 +18,15 @@ public class StandalonePlayer : MonoBehaviour {
 
 	Rigidbody rb;
 
-	public float speed=0f;
-	//public  bool onGround=true;
+	public float RotateSpeed=0f;
+	public  bool onGround=true;
 
-	//bool crouch=false;
+	public  static bool crouch=false;
 
 	Collider recipient;
 
 	Quaternion targetRotation;
+	Vector3 rotation;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -34,20 +36,21 @@ public class StandalonePlayer : MonoBehaviour {
 	}
 	
 
-/*	void Update () {
+	void Update () {
+		
 
 		if (onGround ) {			
 
 			if (crouch) {
-			/	pressure += MinPressure;
-				thrustForce += MinThrustForce;
+				//pressure += MinPressure;
+			//	thrustForce += MinThrustForce;
 				rb.velocity = new Vector3 (0f , pressure, 0f );
 									
 						onGround  = false;
 					}
 			}
 		}
-*/
+
 
 
 
@@ -55,28 +58,15 @@ public class StandalonePlayer : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision other){
-	//	if (other.transform.CompareTag ("ground")) {
-		//	crouch = false;
-			//onGround = true;
-	//	}
-
-		//  Only the tag of the collider is "back"  and  it's bool "onGound" is true, it will getHurt. Means one guy cannot attack the other when  the other flow in air.
-		if (other.collider.CompareTag ("back") /* &&  other.collider.GetComponentInParent<Jump>().onGround == true*/) {
-				print ("sucessBack");
-			//direction = other.collider.transform.forward;
-			//	other.collider.GetComponentInParent<Jump> ().onGround = false;
-			other.collider.SendMessage ("BackGetHurt", damage, SendMessageOptions.DontRequireReceiver);
-			} 
-		if(other.collider.CompareTag ("front")  /*&&  other.collider.GetComponentInParent<Jump>().onGround == true */){
-			print ("sucessFront");
-			//direction = -other.collider.transform.forward;
-			//other.collider.GetComponentInParent<Jump> ().onGround = false;
-			other.collider.SendMessage ("FrontGetHurt", damage , SendMessageOptions.DontRequireReceiver);
+		if (other.transform.CompareTag ("grid")) {
+			crouch = false;
+			onGround = true;
 		}
 
-
-		other.gameObject.SendMessage ("tookDamage", null, SendMessageOptions.DontRequireReceiver);
-
+		//other.gameObject.SendMessage ("tookDamage", null, SendMessageOptions.DontRequireReceiver);
+		if(other.collider.CompareTag("enemy")){
+			deathScript.tookDamage(other.collider);
+		}
 	}
 
 	/*public void Crouch(bool IsCrouch){
@@ -86,7 +76,9 @@ public class StandalonePlayer : MonoBehaviour {
 
 public void StartMoving(float thrustForce){
 	//	rb.MovePosition (rb.position + transform.forward * thrustForce);
-		rb.AddForce(transform.forward  * thrustForce);
+		if (onGround) {
+			rb.AddForce (transform.forward * thrustForce);
+		}
 	}
 
 	public void StartRotation(float HorizontalInput){
@@ -94,8 +86,10 @@ public void StartMoving(float thrustForce){
 		//targetRotation=transform.localRotation;
 		//targetRotation.eulerAngles  = Vector3.up * rotateAngle;
 		//Rot_z = HorizontalInput;
-		
-		transform.localEulerAngles += Vector3.up * HorizontalInput;
+	
+	
+		 transform.localEulerAngles += Vector3.up * HorizontalInput;
+
 	}
 
 
@@ -106,6 +100,10 @@ public void StartMoving(float thrustForce){
 		print ("deadalready");
 		Destroy (this.gameObject);
 
+	}
+
+	public void Crouch(bool IsCrouch){
+		crouch = IsCrouch;
 	}
 
 }

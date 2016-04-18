@@ -12,9 +12,11 @@ public class CameraTricker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position = player.position + offset;
+		Vector3 pos = transform.position;
+		pos.z = player.position.z + offset.z;
+		transform.position = pos;
 
 
-		transform.LookAt (player);
+
 	}
 }

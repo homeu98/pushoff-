@@ -15,7 +15,7 @@ public class Looper : MonoBehaviour {
 	}
 
 	void OnTriggerEnter( Collider other){
-		if(other.CompareTag("grid") || other.CompareTag("emery1")){
+		if(other.CompareTag("grid")){
 			Vector3 gridPos = other.transform.position;
 			gridPos.z += numberOfObject * other.GetComponent<BoxCollider> ().size.z;
 			other.transform.position = gridPos;
