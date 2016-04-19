@@ -9,11 +9,11 @@ public class BulletSystem : MonoBehaviour {
 	public float speed=3f;
 	public GameObject bullet;
 	public float period=3f;
-
+	public float Timer = 3f;
 	float NextAttackTime; 
 	GameObject temporaryBullet;
 	GameObject[,] bulletArray;
-	List<GameObject> bulletList;
+	public static List<GameObject> bulletList;
 
 	// Use this for initialization
 	void Awake(){
@@ -24,7 +24,7 @@ public class BulletSystem : MonoBehaviour {
 	void Start () {
 		NextAttackTime = Time.time + period;
 
-
+		Destroy (gameObject, Timer);
 		}
 	
 	// Update is called once per frame
@@ -39,7 +39,7 @@ public class BulletSystem : MonoBehaviour {
 
 						temporaryBullet.transform.rotation = Quaternion.Slerp (temporaryBullet.transform.rotation, rotation, 5f);
 						temporaryBullet.transform.position = transform.position;
-					temporaryBullet.transform.parent = transform.transform;
+						
 						//bulletDirection[i,j] = temporaryBullet;
 						bulletList.Add(temporaryBullet);
 					}
@@ -47,11 +47,11 @@ public class BulletSystem : MonoBehaviour {
 				NextAttackTime += period;
 			}
 
-			foreach(GameObject n in bulletList){
+		/*	foreach(GameObject n in bulletList){
 			if(n != null)
 				n.transform.Translate (Vector3.forward * Time.deltaTime * speed);
 			
-			}
+			}*/
 				//temporaryBullet.transform.position = Vector3.MoveTowards (temporaryBullet.transform.position, new Vector3 (temporaryBullet.transform.position.x + i, temporaryBullet.transform.position.y, temporaryBullet.transform.position.z + j) * 50f, Time.deltaTime*5f);
 
 

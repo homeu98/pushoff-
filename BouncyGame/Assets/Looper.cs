@@ -20,5 +20,8 @@ public class Looper : MonoBehaviour {
 			gridPos.z += numberOfObject * other.GetComponent<BoxCollider> ().size.z;
 			other.transform.position = gridPos;
 		}
+		if(other.CompareTag("Player")){
+			other.SendMessage ("die",null,SendMessageOptions.DontRequireReceiver);
+		}
 	}
 }

@@ -2,12 +2,18 @@
 using System.Collections;
 
 public class DestructFuntion : MonoBehaviour {
-	public GameObject birdParent;
+	public float Timer = 3f;
+	public float speed= 2f;
 	// Use this for initialization
 	void Start () {
 		
-		Destroy (gameObject, 3f);
+		Destroy (gameObject, Timer);
 	}
 	
+	void Update(){
 
+		transform.Translate (transform.forward * Time.deltaTime * speed);
+
+
+	}
 }

@@ -45,7 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\CameraForcePlayer.cs" />
      <Compile Include="Assets\CameraTricker.cs" />
+     <Compile Include="Assets\Enemies\Bear\Bear.cs" />
      <Compile Include="Assets\Enemies\Big Foot\BigFoot.cs" />
      <Compile Include="Assets\Enemies\Bird\Bird.cs" />
      <Compile Include="Assets\Enemies\Bird\BulletSystem.cs" />
@@ -57,6 +59,7 @@
      <Compile Include="Assets\Enemies\Bird\ShitBoomer.cs" />
      <Compile Include="Assets\Enemies\Bird\TestManager.cs" />
      <Compile Include="Assets\Enemies\Boar\Boar.cs" />
+     <Compile Include="Assets\Enemies\GrassHopper\GrassHopper.cs" />
      <Compile Include="Assets\Enemies\deathScript.cs" />
      <Compile Include="Assets\Enemies\fireFox\bulletScript.cs" />
      <Compile Include="Assets\Enemies\fireFox\fireFoxAttack.cs" />
@@ -64,6 +67,7 @@
      <Compile Include="Assets\Grid.cs" />
      <Compile Include="Assets\Looper.cs" />
      <Compile Include="Assets\PoolManager.cs" />
+     <Compile Include="Assets\Porcupine.cs" />
      <Compile Include="Assets\StandalonePlayer.cs" />
      <Compile Include="Assets\VirtualJoystick.cs" />
      <Compile Include="Assets\doublePlay\Script\FrontgettingHit.cs" />

@@ -31,7 +31,7 @@ public class StandalonePlayer : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 	
-
+		IsKilled = false;
 	
 	}
 	
@@ -67,6 +67,9 @@ public class StandalonePlayer : MonoBehaviour {
 		if(other.collider.CompareTag("enemy")){
 			deathScript.tookDamage(other.collider);
 		}
+		if(other.collider.CompareTag("GrassHopper") && GrassHopper.onGround){
+			deathScript.tookDamage(other.collider);
+		}
 	}
 
 	/*public void Crouch(bool IsCrouch){
@@ -96,7 +99,7 @@ public void StartMoving(float thrustForce){
 	//This is the method to send when enemies hits the player, this is also the method to player player's death animation.
 
 	void die(){
-
+		IsKilled = true;
 		print ("deadalready");
 		Destroy (this.gameObject);
 
