@@ -18,21 +18,25 @@ public class StandalonePlayer : MonoBehaviour {
 
 	Rigidbody rb;
 
-	public float RotateSpeed=0f;
+
 	public  bool onGround=true;
 
 	public  static bool crouch=false;
 
-	Collider recipient;
+	SphereCollider WeaponCollider;
 
 	Quaternion targetRotation;
 	Vector3 rotation;
 
+	public  float temporaryHorizontalInput;
+
+	public static	StandalonePlayer instance;
+
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-	
+		WeaponCollider = GetComponent<SphereCollider> ();
 		IsKilled = false;
-	
+		instance = this;
 	}
 	
 
@@ -44,8 +48,9 @@ public class StandalonePlayer : MonoBehaviour {
 			if (crouch) {
 				//pressure += MinPressure;
 			//	thrustForce += MinThrustForce;
+
 				rb.velocity = new Vector3 (0f , pressure, 0f );
-									
+				WeaponCollider.enabled = true;
 						onGround  = false;
 					}
 			}
@@ -61,9 +66,11 @@ public class StandalonePlayer : MonoBehaviour {
 		if (other.transform.CompareTag ("grid")) {
 			crouch = false;
 			onGround = true;
+			WeaponCollider.enabled = false;
 		}
 
 		//other.gameObject.SendMessage ("tookDamage", null, SendMessageOptions.DontRequireReceiver);
+
 		if(other.collider.CompareTag("enemy")){
 			deathScript.tookDamage(other.collider);
 		}
@@ -71,6 +78,8 @@ public class StandalonePlayer : MonoBehaviour {
 			deathScript.tookDamage(other.collider);
 		}
 	}
+
+
 
 	/*public void Crouch(bool IsCrouch){
 		crouch = IsCrouch;
@@ -89,9 +98,16 @@ public void StartMoving(float thrustForce){
 		//targetRotation=transform.localRotation;
 		//targetRotation.eulerAngles  = Vector3.up * rotateAngle;
 		//Rot_z = HorizontalInput;
-	
-	
-		 transform.localEulerAngles += Vector3.up * HorizontalInput;
+		if (Shunk.IsFaint) {
+			if (Time.time < Shunk.TimeUpToDisappear) {
+				transform.localEulerAngles -= Vector3.up * HorizontalInput;
+			} else {
+				Shunk.IsFaint = false;
+			}
+		} else {
+
+			transform.localEulerAngles += Vector3.up * HorizontalInput;
+		}
 
 	}
 

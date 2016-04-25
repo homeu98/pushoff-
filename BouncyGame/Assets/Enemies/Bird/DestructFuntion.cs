@@ -4,6 +4,7 @@ using System.Collections;
 public class DestructFuntion : MonoBehaviour {
 	public float Timer = 3f;
 	public float speed= 2f;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -15,5 +16,11 @@ public class DestructFuntion : MonoBehaviour {
 		transform.Translate (transform.forward * Time.deltaTime * speed);
 
 
+	}
+
+	void OnCollisionEnter(Collision other){
+		if(other.collider.CompareTag("Player")){
+			other.collider.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
+		}
 	}
 }
