@@ -65,6 +65,8 @@
      <Compile Include="Assets\Enemies\Skunk\Shunk.cs" />
      <Compile Include="Assets\Enemies\bunny\bunnyAttacScript.cs" />
      <Compile Include="Assets\Enemies\bunny\homingCarrot.cs" />
+     <Compile Include="Assets\Enemies\cowBoy\cowBoyBullet.cs" />
+     <Compile Include="Assets\Enemies\cowBoy\cowBoyScript.cs" />
      <Compile Include="Assets\Enemies\crazyChicken\crazyChickenScript.cs" />
      <Compile Include="Assets\Enemies\deathScript.cs" />
      <Compile Include="Assets\Enemies\fireFox\bulletScript.cs" />
