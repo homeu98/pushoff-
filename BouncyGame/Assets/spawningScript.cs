@@ -3,12 +3,18 @@ using System.Collections;
 
 public class spawningScript : MonoBehaviour {
 
+	public GameObject[] SpawningPosition;
+
 
 	public GameObject[] chickenList, bear, bigFoot, boar;
 	public int numberOfChickenSpawn;
 
 	int enemiesNumber= 5;
 	int enemiesType;
+
+
+	int spawningNumber;
+
 
 
 	// Use this for initialization
@@ -30,7 +36,10 @@ public class spawningScript : MonoBehaviour {
 	void randomlizeNumber(){
 
 		enemiesType = Random.Range (1, enemiesNumber);
-		print (enemiesNumber);
+		print (enemiesType);
+
+		spawningNumber = Random.Range (0, SpawningPosition.Length);
+
 
 	}
 
@@ -80,13 +89,11 @@ public class spawningScript : MonoBehaviour {
 
 	void spawningChicken(){
 
-		int teamNumberChicken = Random.Range (0, chickenList.Length + 1);
+		int teamNumberChicken = Random.Range (0, chickenList.Length);
 
+		print (teamNumberChicken);
 
-
-
-		Instantiate (chickenList [1], this.transform.position, chickenList [1].transform.rotation);
-
+		Instantiate (chickenList [teamNumberChicken], SpawningPosition[spawningNumber].transform.position, chickenList [teamNumberChicken].transform.rotation);
 
 
 
@@ -94,20 +101,20 @@ public class spawningScript : MonoBehaviour {
 
 	void spawningBear(){
 
-		Instantiate (bear [0], this.transform.position, bear [0].transform.rotation);
+		Instantiate (bear [0], SpawningPosition[spawningNumber].transform.position , bear [0].transform.rotation);
 
 
 	}
 
 	void spawningBigFoot(){
 
-		Instantiate (bigFoot [0], this.transform.position, bigFoot [0].transform.rotation);
+		Instantiate (bigFoot [0], SpawningPosition[spawningNumber].transform.position, bigFoot [0].transform.rotation);
 
 	}
 
 	void spawningBoar(){
 
-		Instantiate (boar [0], this.transform.position, boar [0].transform.rotation);
+		Instantiate (boar [0], SpawningPosition[spawningNumber].transform.position, boar [0].transform.rotation);
 
 
 	}
