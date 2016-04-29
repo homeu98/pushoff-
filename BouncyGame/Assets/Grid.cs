@@ -32,7 +32,7 @@ public class Grid : MonoBehaviour {
 	void Update(){
 		for (int x = 0; x < width; x++) {
 			for (int z = 0; z < Height; z++) {
-				grid [x, z].transform.Translate (transform.forward * 2 * Time.deltaTime);
+				grid [x, z].transform.Translate (transform.forward * 0.1f * Time.deltaTime);
 			}
 		}
 	}
