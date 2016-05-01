@@ -7,12 +7,19 @@ public class bunnyAttacScript : MonoBehaviour {
 	float playerLocation;
 	public float shootPeroid = 3.0f;
 	GameObject player;
+	GameManager gm;
 
 	// Use this for initialization
 	void Start () {
 
 		player = GameObject.FindWithTag ("Player");
 		InvokeRepeating ("attack", 2.0f, shootPeroid);
+
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nBunny", 1, SendMessageOptions.DontRequireReceiver);
+
+
 	
 	}
 	

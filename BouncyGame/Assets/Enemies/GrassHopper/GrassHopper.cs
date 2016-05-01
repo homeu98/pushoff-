@@ -8,10 +8,16 @@ public class GrassHopper : MonoBehaviour {
 	float NextJumpTime;
 	public static bool onGround = false;
 	Rigidbody rb;
+	GameManager gm;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		NextJumpTime = Time.time + period;
+
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nGrassHopper", 1, SendMessageOptions.DontRequireReceiver);
 	}
 	
 	// Update is called once per frame

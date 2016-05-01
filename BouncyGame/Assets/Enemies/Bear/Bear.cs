@@ -9,10 +9,20 @@ public class Bear : MonoBehaviour {
 	public float Speed =2f;
 	public  float runAwayTime;
 	GameObject player;
+	GameManager gm;
+
+
+
 	// Use this for initialization
 	void Start () {
 		runAwayTime = Time.time + ChaseTime;
 		 player = GameObject.FindGameObjectWithTag ("Player");
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nBear", 1, SendMessageOptions.DontRequireReceiver);
+
+	
+
 	}
 	
 	// Update is called once per frame
@@ -43,4 +53,5 @@ public class Bear : MonoBehaviour {
 			other.collider.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
 		}
 	}
+
 }

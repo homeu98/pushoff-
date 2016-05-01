@@ -23,7 +23,7 @@ public class aiJumpingScript : MonoBehaviour {
 	void jumping(){
 
 		rigi.AddForce (Vector3.up * jumpForce);
-		print ("jumping");
+
 
 	}
 

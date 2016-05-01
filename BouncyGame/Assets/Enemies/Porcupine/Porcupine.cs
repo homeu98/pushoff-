@@ -5,9 +5,16 @@ public class Porcupine : MonoBehaviour {
 	
 	Vector2 escapeDirection;
 	public float runAwaySpeed=2f;
+
+	GameManager gm;
+
 	// Use this for initialization
 	void Start () {
 		escapeDirection = Random.insideUnitCircle * 2f - (Vector2)transform.position;
+
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nPorcupine", 1, SendMessageOptions.DontRequireReceiver);
 	}
 	
 	// Update is called once per frame

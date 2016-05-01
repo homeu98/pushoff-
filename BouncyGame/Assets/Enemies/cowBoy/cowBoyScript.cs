@@ -13,6 +13,8 @@ public class cowBoyScript : MonoBehaviour {
 
 	bool pause;
 
+	GameManager gm;
+
 	int reloadingCounter = 3;
 	float timer = 2.0f;
 
@@ -22,7 +24,9 @@ public class cowBoyScript : MonoBehaviour {
 	void Start () {
 
 		player = GameObject.FindWithTag ("Player");
-	
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nCowBoy", 1, SendMessageOptions.DontRequireReceiver);
 	
 	}
 

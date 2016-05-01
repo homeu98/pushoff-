@@ -10,9 +10,16 @@ public class Shunk : MonoBehaviour {
 	public float StinkDuration = 3f;
 	public static float TimeUpToDisappear;
 	public static bool IsFaint;
+	GameManager gm;
+
+
 	// Use this for initialization
 	void Start () {
 		NextEjectTime = Time.time + chargeTime;
+
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nSkunk", 1, SendMessageOptions.DontRequireReceiver);
 
 	}
 	

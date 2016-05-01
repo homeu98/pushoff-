@@ -7,9 +7,16 @@ public class Boar : MonoBehaviour {
 	public float SinkSpeed=0.5f;
 	bool IsDead=false;
 
+	GameManager gm;
+
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nBoar", 1, SendMessageOptions.DontRequireReceiver);
+
+
 
 	}
 

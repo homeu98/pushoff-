@@ -62,21 +62,21 @@ public class StandalonePlayer : MonoBehaviour {
 
 
 
-	void OnCollisionEnter(Collision other){
+	void OnTriggerEnter(Collider other){
 		if (other.transform.CompareTag ("grid")) {
 			crouch = false;
 			onGround = true;
 			WeaponCollider.enabled = false;
 		}
 
-		//other.gameObject.SendMessage ("tookDamage", null, SendMessageOptions.DontRequireReceiver);
+		other.gameObject.SendMessage ("tookDamage", null, SendMessageOptions.DontRequireReceiver);
 
-		if(other.collider.CompareTag("enemy")){
-			deathScript.tookDamage(other.collider);
-		}
-		if(other.collider.CompareTag("GrassHopper") && GrassHopper.onGround){
-			deathScript.tookDamage(other.collider);
-		}
+		//if(other.collider.CompareTag("enemy")){
+		//	other.gameObject.SendMessage ("tookDamage", null, SendMessageOptions.DontRequireReceiver);
+		//}
+		//if(other.collider.CompareTag("GrassHopper") && GrassHopper.onGround){
+
+		//}
 	}
 
 

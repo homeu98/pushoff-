@@ -8,7 +8,7 @@ public class BigFoot : MonoBehaviour {
 	bool isAttacking = false;
 
 	public SphereCollider attackzone;
-
+	GameManager gm;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +17,12 @@ public class BigFoot : MonoBehaviour {
 		InvokeRepeating ("Attack", 3.0f, period);
 		attackzone = gameObject.GetComponent<SphereCollider> ();
 		attackzone.enabled = false;
+
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nBigFoot", 1, SendMessageOptions.DontRequireReceiver);
+
+
 
 	}
 
@@ -50,7 +56,7 @@ public class BigFoot : MonoBehaviour {
 		/*trigger attack anim 
 				.....
 		*/
-		print ("hit");
+
 		attackzone.enabled = true;
 		isAttacking = true;
 

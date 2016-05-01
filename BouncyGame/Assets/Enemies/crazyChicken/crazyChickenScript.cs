@@ -11,12 +11,17 @@ public class crazyChickenScript : MonoBehaviour {
 	float randomDegree;
 	bool pause;
 	public float restTimer;
+	GameManager gm;
 
 	// Use this for initialization
 	void Start () {
 
 		transform.Rotate (new Vector3 (0f, 180f, 0f));
 		InvokeRepeating ("turn", 1f, turningPeroid);
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+		gm.SendMessage ("nCrazyChicken", 1, SendMessageOptions.DontRequireReceiver);
+
 
 	}
 	
@@ -37,6 +42,8 @@ public class crazyChickenScript : MonoBehaviour {
 			move ();
 
 		}
+
+
 
 	}
 
@@ -91,6 +98,13 @@ public class crazyChickenScript : MonoBehaviour {
 		}
 	}
 
+	void enemiesIsDead(){
+
+		if (this.gameObject == null)
+			gm.SendMessage ("nCrazyChicken", -1, SendMessageOptions.DontRequireReceiver);
+		print ("chicken Is Dead");
+
+	}
 
 
 }

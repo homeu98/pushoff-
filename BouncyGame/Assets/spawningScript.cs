@@ -3,17 +3,20 @@ using System.Collections;
 
 public class spawningScript : MonoBehaviour {
 
-	public GameObject[] SpawningPosition;
-
-
-	public GameObject[] chickenList, bear, bigFoot, boar;
 	public int numberOfChickenSpawn;
+	public GameObject[] SpawningPosition, spawningPositionSide, spawningPositionPair;
 
-	int enemiesNumber= 5;
+
+	public GameObject[] chickenList, bear, bigFoot, boar,bunny, cowBoy, fireFox, grassHopper, porcupine, bird;
+
+
+	int enemiesNumber= 10;
 	int enemiesType;
 
 
 	int spawningNumber;
+
+	GameManager gm;
 
 
 
@@ -23,12 +26,15 @@ public class spawningScript : MonoBehaviour {
 		randomlizeNumber ();
 		InvokeRepeating ("whatToSpawn", 1f, 3f);
 
+		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
+	
 	
 	}
 		
@@ -36,11 +42,84 @@ public class spawningScript : MonoBehaviour {
 	void randomlizeNumber(){
 
 		enemiesType = Random.Range (1, enemiesNumber);
-		print (enemiesType);
 
-		spawningNumber = Random.Range (0, SpawningPosition.Length);
+		spawningNumber = Random.Range (0, SpawningPosition.Length - 1);
 
 
+	}
+
+	void doNotSpawnTheSameThing(){
+
+		// here to set the limit of each enemies spawning number
+
+		if (gm.crazyChicken >= 5) {
+
+			if (enemiesType == 1) 
+					enemiesType += 1;
+		}
+
+
+		if (gm.bear >= 2) {
+
+			if (enemiesType == 2) 
+				enemiesType += 1;
+
+		}
+
+		if (gm.bigFoot >= 2) {
+
+			if (enemiesType == 3) 
+				enemiesType += 1;
+		}
+
+		if (gm.boar >= 5) {
+
+			if (enemiesType == 4) 
+				enemiesType += 1;
+			
+		}
+
+		if (gm.bird >= 1) {
+
+			if (enemiesType == 5)
+				enemiesType += 1;
+
+		}
+
+		if (gm.bunny >= 2) {
+
+			if (enemiesType == 6) 
+				enemiesType += 1;
+
+		}
+
+		if (gm.cowBoy >= 2) {
+
+			if (enemiesType == 7)
+				enemiesType += 1;
+
+		}
+
+		if(gm.fireFox >= 2){
+
+			if (enemiesType == 8) 
+				enemiesType += 1;
+
+		}
+
+		if(gm.grassHopper>= 1){
+
+			if (enemiesType == 9) 
+				enemiesType += 1;
+
+		}
+
+		if(gm.porcupine >= 2){
+
+			if(enemiesType ==10)
+				enemiesType = 1;
+
+		}
 	}
 
 
@@ -48,31 +127,97 @@ public class spawningScript : MonoBehaviour {
 
 		randomlizeNumber ();
 
+		doNotSpawnTheSameThing ();
+
 		switch (enemiesType) {
 
 		case 1:
 
-			print ("spawnChicken");
-			spawningChicken ();
+
+			int teamNumberChicken = Random.Range (0, chickenList.Length);
+
+
+			//print ("spawnChicken");
+			spawningChicken (teamNumberChicken);
 			break;
 
 		case 2:
 
-			print ("spawningBear");
-			spawningBear ();
+			int teamNumberBear = Random.Range (0, bear.Length);
+
+
+			//print ("spawningBear");
+			spawningBear (teamNumberBear);
 			break;
 		
 		case 3:
 
-			print ("spawningBigFoot");
-			spawningBigFoot ();
+			int teamNumberBigFoot = Random.Range (0, bigFoot.Length);
+
+			//print ("spawningBigFoot");
+			spawningBigFoot (teamNumberBigFoot);
 			break;
 
 		case 4:
 
-			print ("spawningBoar");
-			spawningBoar ();
+			int teamNumberBoar = Random.Range (0, boar.Length);
+
+			//print ("spawningBoar");
+			spawningBoar (teamNumberBoar);
 			break;
+		
+		case 5:
+
+			int teamNumberBird = Random.Range (0, bird.Length);
+
+
+			//print ("spawningBird");
+			spawningBird (teamNumberBird);
+			break;
+
+		case 6:
+
+			int teamNumberBunny = Random.Range (0, bunny.Length);
+
+
+			//print ("spawningBunny");
+			spawningBunny (teamNumberBunny);
+			break;
+
+		case 7:
+
+			int teamNumberCowBoy = Random.Range (0, cowBoy.Length);
+
+
+			//print ("spawningCowBoy");
+			spawningCowBoy (teamNumberCowBoy);
+			break;
+
+		case 8:
+			int teamFireFox = Random.Range (0, fireFox.Length);
+
+
+			//print ("spawningFireFox");
+			spawningfireFox (teamFireFox);
+			break;
+		
+		case 9:
+
+			int teamGrassHopper = Random.Range (0, grassHopper.Length);
+
+			//print ("spawningGrassHopper");
+			spawninGrassHopper (teamGrassHopper);
+			break;
+
+		case 10:
+			
+			int teamPorcupine = Random.Range (0, porcupine.Length);
+
+			//print ("porcupine");
+			spawningPorcupine (teamPorcupine);
+			break;
+
+	
 
 		default:
 
@@ -87,37 +232,92 @@ public class spawningScript : MonoBehaviour {
 	}
 
 
-	void spawningChicken(){
+	void spawningChicken(int teamNumberChicken){
 
-		int teamNumberChicken = Random.Range (0, chickenList.Length);
-
-		print (teamNumberChicken);
 
 		Instantiate (chickenList [teamNumberChicken], SpawningPosition[spawningNumber].transform.position, chickenList [teamNumberChicken].transform.rotation);
 
 
+	}
+
+	void spawningBear(int teamNumberBear){
+
+
+
+		Instantiate (bear [teamNumberBear], SpawningPosition[spawningNumber].transform.position , bear [teamNumberBear].transform.rotation);
+
 
 	}
 
-	void spawningBear(){
+	void spawningBigFoot(int teamNumberBigFoot){
 
-		Instantiate (bear [0], SpawningPosition[spawningNumber].transform.position , bear [0].transform.rotation);
+
+		Instantiate (bigFoot [teamNumberBigFoot], SpawningPosition[spawningNumber].transform.position, bigFoot [teamNumberBigFoot].transform.rotation);
+
+	}
+
+	void spawningBoar(int teamNumberBoar){
+
+
+
+
+		Instantiate (boar [teamNumberBoar], SpawningPosition[spawningNumber].transform.position, boar [teamNumberBoar].transform.rotation);
 
 
 	}
 
-	void spawningBigFoot(){
+	void spawningBird(int teamNumberBird){
 
-		Instantiate (bigFoot [0], SpawningPosition[spawningNumber].transform.position, bigFoot [0].transform.rotation);
 
-	}
 
-	void spawningBoar(){
-
-		Instantiate (boar [0], SpawningPosition[spawningNumber].transform.position, boar [0].transform.rotation);
+		Instantiate (bird [teamNumberBird], SpawningPosition[spawningNumber].transform.position, bird [teamNumberBird].transform.rotation);
 
 
 	}
+
+	void spawningBunny(int teamNumberBunny){
+
+
+		Instantiate (bunny [teamNumberBunny], SpawningPosition[spawningNumber].transform.position, bunny [teamNumberBunny].transform.rotation);
+
+
+	}
+
+	void spawningCowBoy(int teamNumberCowBoy){
+
+
+		Instantiate (cowBoy [teamNumberCowBoy], SpawningPosition[spawningNumber].transform.position, cowBoy [teamNumberCowBoy].transform.rotation);
+
+
+	}
+
+
+	void spawningfireFox(int teamFireFox){
+
+
+
+		Instantiate (fireFox [teamFireFox], SpawningPosition[spawningNumber].transform.position, fireFox [teamFireFox].transform.rotation);
+
+
+	}
+
+	void spawningPorcupine(int teamPorcupine){
+
+
+		Instantiate (porcupine [teamPorcupine], SpawningPosition[spawningNumber].transform.position, porcupine [teamPorcupine].transform.rotation);
+
+
+	}
+
+	void spawninGrassHopper(int teamGrassHopper){
+
+
+
+		Instantiate (grassHopper [teamGrassHopper], SpawningPosition[spawningNumber].transform.position, grassHopper [teamGrassHopper].transform.rotation);
+
+
+	}
+
 
 
 
