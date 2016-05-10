@@ -45,8 +45,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CameraForcePlayer.cs" />
-     <Compile Include="Assets\CameraTricker.cs" />
      <Compile Include="Assets\Enemies\Bear\Bear.cs" />
      <Compile Include="Assets\Enemies\Big Foot\BigFoot.cs" />
      <Compile Include="Assets\Enemies\Bird\Bird.cs" />
@@ -64,26 +62,31 @@
      <Compile Include="Assets\Enemies\Porcupine\destructBoomer.cs" />
      <Compile Include="Assets\Enemies\Skunk\Shunk.cs" />
      <Compile Include="Assets\Enemies\aiJumpingScript.cs" />
-     <Compile Include="Assets\Enemies\bunny\bunnyAttacScript.cs" />
-     <Compile Include="Assets\Enemies\bunny\homingCarrot.cs" />
-     <Compile Include="Assets\Enemies\cowBoy\cowBoyBullet.cs" />
-     <Compile Include="Assets\Enemies\cowBoy\cowBoyScript.cs" />
      <Compile Include="Assets\Enemies\crazyChicken\crazyChickenScript.cs" />
      <Compile Include="Assets\Enemies\deathScript.cs" />
      <Compile Include="Assets\Enemies\fireFox\bulletScript.cs" />
      <Compile Include="Assets\Enemies\fireFox\fireFoxAttack.cs" />
-     <Compile Include="Assets\GameManager.cs" />
-     <Compile Include="Assets\Grid.cs" />
-     <Compile Include="Assets\Looper.cs" />
-     <Compile Include="Assets\MultidimensionalArray.cs" />
-     <Compile Include="Assets\PoolManager.cs" />
-     <Compile Include="Assets\SpawnEnemy.cs" />
-     <Compile Include="Assets\StandalonePlayer.cs" />
-     <Compile Include="Assets\VirtualJoystick.cs" />
-     <Compile Include="Assets\doublePlay\Script\FrontgettingHit.cs" />
-     <Compile Include="Assets\doublePlay\Script\Jump.cs" />
-     <Compile Include="Assets\doublePlay\Script\gettingHit.cs" />
-     <Compile Include="Assets\spawningScript.cs" />
+     <Compile Include="Assets\Enemies\miniBoss\buffalo\buffalo.cs" />
+     <Compile Include="Assets\Enemies\miniBoss\bunny\bunnyAttacScript.cs" />
+     <Compile Include="Assets\Enemies\miniBoss\bunny\homingCarrot.cs" />
+     <Compile Include="Assets\Enemies\miniBoss\cowBoy\cowBoyBullet.cs" />
+     <Compile Include="Assets\Enemies\miniBoss\cowBoy\cowBoyScript.cs" />
+     <Compile Include="Assets\items\Coin\coin.cs" />
+     <Compile Include="Assets\items\Coin\droppingCoin.cs" />
+     <Compile Include="Assets\script\CameraForcePlayer.cs" />
+     <Compile Include="Assets\script\CameraTricker.cs" />
+     <Compile Include="Assets\script\GameManager.cs" />
+     <Compile Include="Assets\script\Grid.cs" />
+     <Compile Include="Assets\script\Looper.cs" />
+     <Compile Include="Assets\script\MultidimensionalArray.cs" />
+     <Compile Include="Assets\script\PoolManager.cs" />
+     <Compile Include="Assets\script\SpawnEnemy.cs" />
+     <Compile Include="Assets\script\StandalonePlayer.cs" />
+     <Compile Include="Assets\script\UIcoin.cs" />
+     <Compile Include="Assets\script\UIenemiesKilled.cs" />
+     <Compile Include="Assets\script\VirtualJoystick.cs" />
+     <Compile Include="Assets\script\progressBar.cs" />
+     <Compile Include="Assets\script\spawningScript.cs" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>

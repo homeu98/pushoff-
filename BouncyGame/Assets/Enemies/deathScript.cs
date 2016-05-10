@@ -1,26 +1,40 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class deathScript : MonoBehaviour {
 
 	/*Animator anim;
 	GameObject Anim;*/
 
-	public bool bear, bigfoot, bird, boar, bunny, cowboy, cazyChicken, fireFox, grassHopper, porcupine, skunk;
+	public bool buffalo, bear, bigfoot, bird, boar, bunny, cowboy, cazyChicken, fireFox, grassHopper, porcupine, skunk;
 	GameManager gm;
+	public int progress;
+
+	Slider progressBar;
 
 
 	void Start(){
 
 		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
+		progressBar = GameObject.FindWithTag ("progressBar").GetComponent<Slider> ();
 
+	}
+
+	public void tookDamage(){
+
+		dead ();
 
 	}
 
 	public void dead(){
+		
+		if (buffalo) {
 
-		print ("killedThisMOtehrlawj;efkla");
+			gm.SendMessage ("nBuffalo", -1, SendMessageOptions.DontRequireReceiver);
+			Destroy (this.gameObject);
 
+		}
 		if (bear) {
 
 			gm.SendMessage ("nBear", -1, SendMessageOptions.DontRequireReceiver);
@@ -90,14 +104,24 @@ public class deathScript : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 
+
+		progressBar.SendMessage ("add", 5, SendMessageOptions.DontRequireReceiver);
+
+
 	}
 
 
-	void OnCollisionEnter(Collider other){
+	void OnTriggerEnter(Collider other){
 
 		if (other.tag == "looper") {
 
-			print ("hit");
+			if (buffalo) {
+
+				gm.SendMessage ("nBuffalo", -1, SendMessageOptions.DontRequireReceiver);
+				Destroy (this.gameObject);
+
+			}
+
 			if (bear) {
 
 				gm.SendMessage ("nBear", -1, SendMessageOptions.DontRequireReceiver);
@@ -167,7 +191,12 @@ public class deathScript : MonoBehaviour {
 				Destroy (this.gameObject);
 			}
 
+			progressBar.SendMessage ("add", 1, SendMessageOptions.DontRequireReceiver);
+	
 		}
+
+
+	
 	}
 
 }

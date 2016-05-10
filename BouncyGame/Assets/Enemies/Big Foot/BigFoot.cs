@@ -6,6 +6,7 @@ public class BigFoot : MonoBehaviour {
 	//public LayerMask playerMask;
 	float attackTimer = 2.0f;
 	bool isAttacking = false;
+	public float movingSpeed;
 
 	public SphereCollider attackzone;
 	GameManager gm;
@@ -34,6 +35,8 @@ public class BigFoot : MonoBehaviour {
 		//2 second in total.
 	
 
+
+
 		if (isAttacking) {
 
 			attackTimer -= Time.deltaTime;
@@ -43,11 +46,16 @@ public class BigFoot : MonoBehaviour {
 				attackzone.enabled = false;
 				attackTimer = 2.0f;
 				isAttacking = false;
+				moving (true);
+			} 
+		} else if (!isAttacking) {
 
-			}
+			moving (false);
 
 		}
 
+
+	
 	}
 
 	//This is just to enable the attack zone, and the attack zone is the spherecollider
@@ -67,10 +75,23 @@ public class BigFoot : MonoBehaviour {
 	//when something enter its attack zone while it is attacking, "player" will die.
 	void OnTriggerEnter (Collider col){
 
-	
+
 			col.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
 
+	}
 
+	void moving(bool attacking){
+
+		if (!attacking) {
+			movingSpeed = 0.5f;
+			transform.Translate (Vector3.forward * movingSpeed * Time.deltaTime);
+		}else if(attacking){
+
+			movingSpeed = 0f;
+
+		}
+	
+	
 	}
 
 }

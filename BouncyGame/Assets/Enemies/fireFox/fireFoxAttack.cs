@@ -8,6 +8,7 @@ public class fireFoxAttack : MonoBehaviour {
 	float shootPeroid = 3.0f;
 	GameObject player;
 	GameManager gm;
+	public float movingSpeed;
 
 	// Use this for initialization
 	void Start () {
@@ -22,7 +23,7 @@ public class fireFoxAttack : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
+		transform.Translate (Vector3.forward * movingSpeed * Time.deltaTime);
 	
 	}
 
@@ -42,5 +43,7 @@ public class fireFoxAttack : MonoBehaviour {
 
 	
 	}
+
+
 
 }
