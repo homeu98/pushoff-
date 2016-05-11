@@ -9,7 +9,7 @@ public class homingCarrot : MonoBehaviour {
 
 	bool flyBackToBunny = false;
 
-	GameObject bunny;
+	public GameObject bunny;
 	// Use this for initialization
 	void Start () {
 		
