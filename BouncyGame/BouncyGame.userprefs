@@ -1,8 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Enemies/deathScript.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Enemies/boss/rocketGuy/rocketGuyScript.cs">
     <Files>
-      <File FileName="Assets/Enemies/deathScript.cs" Line="32" Column="1" />
+      <File FileName="Assets/Enemies/boss/rocketGuy/rocketGuyScript.cs" Line="42" Column="3" />
+      <File FileName="Assets/Enemies/deathScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Enemies/boss/rocketGuy/homingMissleScript.cs" Line="1" Column="1" />
+      <File FileName="Assets/Enemies/miniBoss/bunny/homingCarrot.cs" Line="50" Column="1" />
+      <File FileName="Assets/Enemies/boss/fatGuy/fatGuyScript.cs" Line="198" Column="30" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

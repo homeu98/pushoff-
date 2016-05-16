@@ -19,7 +19,7 @@ public class UIenemiesKilled : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		print (gm.numbersOfKill);
+		//print (gm.numbersOfKill);
 		uiCoin.text = gm.numbersOfKill.ToString ();
 	
 	}

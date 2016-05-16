@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour {
 	public void currentNumbersOfEnemies(){
 
 		totalNumber = bear + bigFoot + bird + boar + bunny + cowBoy + crazyChicken + fireFox + grassHopper + porcupine + skunk;
-		print (totalNumber);
+		//print (totalNumber);
 
 	}
 

@@ -29,7 +29,7 @@ public class Bear : MonoBehaviour {
 	void Update () {
 
 
-		if(Physics.CheckSphere(transform.position, ViewRadius, playerMask)){
+		if (Physics.CheckSphere (transform.position, ViewRadius, playerMask)) {
 			if (Time.time > runAwayTime)
 				return;
 
@@ -41,9 +41,8 @@ public class Bear : MonoBehaviour {
 		
 			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 
-			transform.Translate (Vector3.forward * Time.deltaTime* Speed);
-		}
-
+			transform.Translate (Vector3.forward * Time.deltaTime * Speed);
+		} 
 	
 
 	}
