@@ -41,4 +41,6 @@ public class GrassHopper : MonoBehaviour {
 			other.collider.SendMessage ("die", null,SendMessageOptions.DontRequireReceiver);
 		}
 	}
+
+
 }

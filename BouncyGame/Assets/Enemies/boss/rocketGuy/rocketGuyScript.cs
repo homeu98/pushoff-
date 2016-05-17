@@ -8,6 +8,8 @@ public class rocketGuyScript : MonoBehaviour {
 	public float restTimer, movePauseTimer, step, homingMissleFlyingTime, pausePeroidOfAirStikeBullet;
 	GameObject player;
 
+	public float decendingSpeed;
+
 	public GameObject airStrikeBullet;
 
 	Vector3 playerPosition;
@@ -36,34 +38,29 @@ public class rocketGuyScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
-		playerGroundPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
+		//playerGroundPosition = new Vector3 (transform.position.x, 0f, transform.position.z);
 
-		playerAirPosition = new Vector3 (transform.position.x, 3.0f, transform.position.z);
+		//playerAirPosition = new Vector3 (transform.position.x, 3.0f, transform.position.z);
 
-		if (eType == rocketGuy.resting) {
+		print (onSky);
 
-			if (onGround) {
+		if (eType == rocketGuy.resting && onGround != true) {
 
+			transform.Translate (Vector3.down * decendingSpeed * Time.deltaTime);
 
-
-			} else {
-
-				transform.position = Vector3.MoveTowards (transform.position, playerGroundPosition, step); 
-			}
 		}
 
-		if (eType == rocketGuy.rampageAttack) {
+		if (eType == rocketGuy.returningToAir && onSky != true) {
+
+			transform.Translate (Vector3.up * decendingSpeed * Time.deltaTime);
+
+		} 
+			
+
+		if (eType == rocketGuy.rampageAttack && onGround == false ) {
 
 			print ("isright");
 			rampageAttack ();
-
-		}
-
-
-		while (eType == rocketGuy.returningToAir) {
-
-			onGround = false;
-			transform.position = Vector3.MoveTowards (transform.position, playerAirPosition, step);
 
 		}
 
@@ -115,6 +112,7 @@ public class rocketGuyScript : MonoBehaviour {
 		
 
 		case rocketGuy.resting:
+			onSky = false;
 			StartCoroutine ("rest");
 
 			break;
@@ -159,11 +157,11 @@ public class rocketGuyScript : MonoBehaviour {
 	void rampageAttack(){
 
 
-		print ("ramping");
+		//print ("ramping");
 		//playerPosition.y = 0.0f;
 		transform.position = Vector3.MoveTowards (transform.position, playerPosition, step);
 
-		if (Vector3.Distance (transform.position, playerPosition) <= 0.5) {
+		if (Vector3.Distance (transform.position, playerPosition) <= 0.5 || onGround) {
 
 			print ("arrived");
 
@@ -193,7 +191,7 @@ public class rocketGuyScript : MonoBehaviour {
 
 	IEnumerator airStrike(){
 
-		print ("airstirking");
+		//print ("airstirking");
 		for (int i = 0; i <= 3; i++) {
 
 			Vector3 spawnPosition = new Vector3(playerPosition.x, playerPosition.y + 3f, playerPosition.z + i);
@@ -224,6 +222,14 @@ public class rocketGuyScript : MonoBehaviour {
 			onGround = true;
 		}
 
+		if (other.gameObject.tag == "sky") {
+
+			onSky = true;
+
+			print ("hitted The Sky");
+			StartCoroutine ("movePause");
+
+		}
 
 	}
 

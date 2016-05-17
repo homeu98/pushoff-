@@ -150,4 +150,13 @@ public class GameManager : MonoBehaviour {
 
 	}
 		
+
+	void jumped(){
+
+		GameObject graveYard = GameObject.FindWithTag ("graveYard");
+
+		if (graveYard != null) {
+			graveYard.SendMessage ("addUp", null, SendMessageOptions.DontRequireReceiver);
+		}
+	}
 }

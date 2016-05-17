@@ -14,7 +14,7 @@ public class homingCarrot : MonoBehaviour {
 	void Start () {
 		
 		thePlayer = GameObject.FindWithTag ("Player");
-		bunny = GameObject.FindWithTag ("bunny");
+		bunny = GameObject.FindWithTag ("miniBoss");
 		transform.LookAt (thePlayer.transform);
 	
 

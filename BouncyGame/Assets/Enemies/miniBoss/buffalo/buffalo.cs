@@ -4,13 +4,15 @@ using System.Collections;
 public class buffalo : MonoBehaviour {
 
 
-	public float rampageSpeed;
+	public float rampageSpeed, runAwaySpeed;
 	GameObject player;
 	public float restTimer;
 	bool ramping = false;
 	int numberOfRampePage = 0;
 
-	float timer = 2f;
+	Vector3 playerOldPosition;
+
+	private buffaloType eType = buffaloType.notRamping;
 
 
 	// Use this for initialization
@@ -19,89 +21,91 @@ public class buffalo : MonoBehaviour {
 		player = GameObject.FindWithTag ("Player");
 		StartCoroutine ("chraging");
 
-	
 	}
-	
+
+	public enum buffaloType{
+
+		ramping,
+		notRamping,
+		runningAway
+
+	}
+
+
+
 	// Update is called once per frame
 	void Update () {
 
-		//timer -= Time.deltaTime;
+		if (eType == buffaloType.ramping) {
 
+			rampageAttack ();
 
-		if (!ramping) {
-			transform.LookAt (player.transform);
+		}
+			
+		if (eType == buffaloType.runningAway) {
 
-		
-		} else {
+			runAway ();
 
-			if (numberOfRampePage >= 3) {
-
-				runAway ();
-			} else {
-
-				rampage ();
-			}
-		
 		}
 
+		if (numberOfRampePage >= 4) {
+
+			eType = buffaloType.runningAway;
+			chooseType (eType);
+
+		}
+
+		print (eType);
 
 	}
 
 	IEnumerator chraging(){
-
-		ramping = false;
-
+		
 		yield return new WaitForSeconds (restTimer);
-
-		ramping = true;
-
 		numberOfRampePage += 1;
-
-		print (numberOfRampePage);
-
-		if (numberOfRampePage < 3) {
-			rampage ();
-
-		}
-
-
+		eType = buffaloType.ramping;
+		chooseType (eType);
 
 
 	}
+	void chooseType(buffaloType what){
 
+		switch (eType) {
 
-	void rampage (){
+		case buffaloType.ramping:
+			playerOldPosition = player.transform.position;
+			//StartCoroutine ("rest");
+			break;
 
-		Vector3 playerPosition = player.transform.position;
-		float screenWidth = Screen.width;
-		float screenHeight = Screen.height;
-
-		Vector3 tmpPos = Camera.main.WorldToScreenPoint (transform.position);
-
-		print ("tmpPos" + tmpPos + "screenWidth " + Screen.width + "screenHeight" + Screen.height);
-
-
-		if (tmpPos.y >= Screen.height - 50f || tmpPos.x >= screenWidth - 50f || tmpPos.y <= 50f || tmpPos.x <= 50f){
-
-
+		case buffaloType.notRamping:
 			StartCoroutine ("chraging");
+			break;
 
-		} else {
+		case buffaloType.runningAway:
 
-			transform.Translate (Vector3.forward * rampageSpeed * Time.deltaTime);
-
+			break;
 
 		}
-
-
-
-
-
 	}
+
+
+	void rampageAttack (){
+
+		transform.position = Vector3.Lerp (transform.position, playerOldPosition, rampageSpeed);
+
+		if (Vector3.Distance (transform.position, playerOldPosition) <= 0.5) {
+
+			eType = buffaloType.notRamping;
+
+			chooseType (eType);
+		}
+	}
+
+
 
 	void runAway(){
 
-		transform.Translate (Vector3.forward * rampageSpeed * Time.deltaTime);
+		transform.Translate (Vector3.forward * runAwaySpeed * Time.deltaTime);
 
 	}
 
@@ -109,15 +113,21 @@ public class buffalo : MonoBehaviour {
 	void OnCollisionEnter(Collision other){
 
 
-		if (ramping) {
-
+		if (eType == buffaloType.ramping) {
 
 			other.gameObject.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
-
 
 		}
 	}
 
+	void tookDamage(){
 
+		if (eType == buffaloType.notRamping || eType == buffaloType.runningAway) {
+
+			Destroy (this.gameObject);
+
+		}
+
+	}
 
 }

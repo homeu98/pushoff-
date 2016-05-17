@@ -42,7 +42,11 @@ public class Bear : MonoBehaviour {
 			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
 
 			transform.Translate (Vector3.forward * Time.deltaTime * Speed);
-		} 
+		} else {
+
+			transform.Translate (Vector3.forward * Time.deltaTime * Speed);
+
+		}
 	
 
 	}

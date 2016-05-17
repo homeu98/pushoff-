@@ -7,10 +7,17 @@ public class spawningScript : MonoBehaviour {
 
 	public GameObject[] SpawningPosition, spawningPositionSide, spawningPositionPair;
 
+	public GameObject miniBossSpawnPoint;
 
-	public GameObject[] chickenList, bear, bigFoot, boar, fireFox, grassHopper, porcupine, bird;
+	private spawningStatus eType = spawningStatus.normalEnemies;
+
+
+	public GameObject[] chickenList, bear, bigFoot, boar, fireFox, grassHopper, porcupine, bird, graveYard, turtleList;
 
 	public GameObject[] miniBossList;
+
+	public GameObject[] bossList;
+
 	GameObject mainCamera;
 
 	int enemiesNumber= 10;
@@ -30,18 +37,12 @@ public class spawningScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		randomlizeNumber ();
 		//InvokeRepeating ("whatToSpawn", 1f, 3f);
-
 		mainCamera = GameObject.FindWithTag ("MainCamera");
-
 		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-
-		StartCoroutine ("restartPausing");
-
 		progressBar = GameObject.FindWithTag ("progressBar").GetComponent<Slider> ();
 
+		chooseType (eType);
 
 	}
 	
@@ -56,17 +57,92 @@ public class spawningScript : MonoBehaviour {
 			miniBossHere = false;
 		}
 
+		print (eType);
+
 
 	
 	}
 
-	IEnumerator restartPausing(){
+	public enum spawningStatus{
 
-		if (miniBossHere) {
+		normalEnemies,
+		miniBoss,
+		boss,
+		notSpawning
+
+	}
+
+	IEnumerator pauseSpawning(){
+
+		yield return new WaitForSeconds (pauseSpawningTime);
+
+	}
+		
+
+	void progressBarCurrent(){
+
+		if (progressBar.value == 100) {
+
+			eType = spawningStatus.boss;
+
+		} else if (progressBar.value % 10 == 0 && progressBar.value != 100 && progressBar.value != 0) {
+
+			eType = spawningStatus.miniBoss;
+
+		}else{
+
+			eType = spawningStatus.normalEnemies;
+		}
+	}
+
+
+	void chooseType(spawningStatus whatStatus){
+
+		progressBarCurrent ();
+
+		switch (eType) {
+
+		case spawningStatus.normalEnemies:
+			StartCoroutine ("whatToSpawn");
+			break;
+
+		case spawningStatus.miniBoss:
+			StartCoroutine ("whatToSpawn");
+			break;
+
+		case spawningStatus.boss:
+			StartCoroutine ("whatToSpawn");
+			break;
+
+		case spawningStatus.notSpawning:
+
+			break;
+
+		}
+
+	}
+
+	IEnumerator whatToSpawn(){
+
+
+		doNotSpawnTheSameThing ();
+
+		if (eType == spawningStatus.boss) {
+
+			enemiesType = 12;
+			pauseSpawningTime = 100f;
+
+		} else if (eType == spawningStatus.miniBoss) {
+
+			enemiesType = 11;
+			pauseSpawningTime = 10f;
+
+
+		} else if(eType == spawningStatus.normalEnemies) {
 			
-			pauseSpawningTime = 15f;
+			enemiesType = Random.Range (0, enemiesNumber);
 
-		} else {
+			spawningNumber = Random.Range (0, SpawningPosition.Length - 1);
 
 			pauseSpawningTime = 3f;
 
@@ -74,101 +150,6 @@ public class spawningScript : MonoBehaviour {
 
 		yield return new WaitForSeconds (pauseSpawningTime);
 
-		whatToSpawn ();
-
-	}
-
-
-	void randomlizeNumber(){
-
-		enemiesType = Random.Range (0, enemiesNumber);
-
-		spawningNumber = Random.Range (0, SpawningPosition.Length - 1);
-
-
-	}
-
-	void doNotSpawnTheSameThing(){
-
-		// here to set the limit of each enemies spawning number
-
-		if (gm.crazyChicken >= 5) {
-
-			if (enemiesType == 1) 
-					enemiesType += 1;
-		}
-
-
-		if (gm.bear >= 2) {
-
-			if (enemiesType == 2) 
-				enemiesType += 1;
-
-		}
-
-		if (gm.bigFoot >= 2) {
-
-			if (enemiesType == 3) 
-				enemiesType += 1;
-		}
-
-		if (gm.boar >= 5) {
-
-			if (enemiesType == 4) 
-				enemiesType += 1;
-			
-		}
-
-		if (gm.bird >= 1) {
-
-			if (enemiesType == 5)
-				enemiesType += 1;
-
-		}
-
-		if (gm.bunny >= 2) {
-
-			if (enemiesType == 6) 
-				enemiesType += 1;
-
-		}
-
-		if (gm.cowBoy >= 2) {
-
-			if (enemiesType == 7)
-				enemiesType += 1;
-
-		}
-
-		if(gm.fireFox >= 2){
-
-			if (enemiesType == 8) 
-				enemiesType += 1;
-
-		}
-
-		if(gm.grassHopper>= 1){
-
-			if (enemiesType == 9) 
-				enemiesType += 1;
-
-		}
-
-		if(gm.porcupine >= 2){
-
-			if(enemiesType ==10)
-				enemiesType = 1;
-
-		}
-	}
-
-
-	void whatToSpawn(){
-
-
-		randomlizeNumber ();
-
-		doNotSpawnTheSameThing ();
 
 		switch (enemiesType) {
 
@@ -241,32 +222,53 @@ public class spawningScript : MonoBehaviour {
 			spawningPorcupine (teamPorcupine);
 			break;
 
+	
 		case 9:
 
-			int miniBoss = Random.Range (0, miniBossList.Length);
+			int graveYardList = Random.Range (0, graveYard.Length);
+			spawningGraveYard (graveYardList);
+			break;
+		
+		case 10:
 
+			int turtle = Random.Range (0, turtleList.Length);
+			spawningTutrle (turtle);
+			break;
+	
+		case 11:
+
+			int miniBoss = Random.Range (0, miniBossList.Length);
 			spawningMiniBosses (miniBoss);
 
 			break;
+
+		case 12:
+
+			int boss = Random.Range (0, bossList.Length);
+			spawningMiniBosses (boss);
+			break;
+
 		
 		default:
 
-			print ("nomral");
 			break;
-
-
 
 		}
 
-
-
-		StartCoroutine ("restartPausing");
-
+	
+		chooseType (eType);
 	}
 
 	void spawningMiniBosses(int whichBoss ){
 
-		Instantiate (miniBossList[whichBoss] , SpawningPosition[spawningNumber].transform.position, miniBossList[whichBoss].transform.rotation);
+		Instantiate (miniBossList[whichBoss] ,miniBossSpawnPoint.transform.position, miniBossList[whichBoss].transform.rotation);
+
+
+	}
+
+	void spawningTutrle(int teamTurtle ){
+
+		Instantiate (turtleList[teamTurtle] ,SpawningPosition[spawningNumber].transform.position, turtleList[teamTurtle].transform.rotation);
 
 
 	}
@@ -280,8 +282,13 @@ public class spawningScript : MonoBehaviour {
 
 	}
 
-	void spawningBear(int teamNumberBear){
+	void spawningGraveYard (int teamNumberGraveYard){
 
+		Instantiate (graveYard [teamNumberGraveYard], SpawningPosition[spawningNumber].transform.position, graveYard [teamNumberGraveYard].transform.rotation);
+
+	}
+
+	void spawningBear(int teamNumberBear){
 
 
 		Instantiate (bear [teamNumberBear], SpawningPosition[spawningNumber].transform.position , bear [teamNumberBear].transform.rotation);
@@ -299,8 +306,6 @@ public class spawningScript : MonoBehaviour {
 	void spawningBoar(int teamNumberBoar){
 
 
-
-
 		Instantiate (boar [teamNumberBoar], SpawningPosition[spawningNumber].transform.position, boar [teamNumberBoar].transform.rotation);
 
 
@@ -315,8 +320,6 @@ public class spawningScript : MonoBehaviour {
 
 	}
 		
-
-
 
 	void spawningfireFox(int teamFireFox){
 
@@ -343,6 +346,92 @@ public class spawningScript : MonoBehaviour {
 
 
 	}
+
+	void spawningBoss(int whichBossNumber){
+
+
+		Instantiate (bossList [whichBossNumber], miniBossSpawnPoint.transform.position, bossList [whichBossNumber].transform.rotation);
+
+
+	}
+
+
+
+
+	void doNotSpawnTheSameThing(){
+
+		// here to set the limit of each enemies spawning number
+
+		if (gm.crazyChicken >= 5) {
+
+			if (enemiesType == 1) 
+				enemiesType += 1;
+		}
+
+
+		if (gm.bear >= 2) {
+
+			if (enemiesType == 2) 
+				enemiesType += 1;
+
+		}
+
+		if (gm.bigFoot >= 2) {
+
+			if (enemiesType == 3) 
+				enemiesType += 1;
+		}
+
+		if (gm.boar >= 5) {
+
+			if (enemiesType == 4) 
+				enemiesType += 1;
+
+		}
+
+		if (gm.bird >= 1) {
+
+			if (enemiesType == 5)
+				enemiesType += 1;
+
+		}
+
+		if (gm.bunny >= 2) {
+
+			if (enemiesType == 6) 
+				enemiesType += 1;
+
+		}
+
+		if (gm.cowBoy >= 2) {
+
+			if (enemiesType == 7)
+				enemiesType += 1;
+
+		}
+
+		if(gm.fireFox >= 2){
+
+			if (enemiesType == 8) 
+				enemiesType += 1;
+
+		}
+
+		if(gm.grassHopper>= 1){
+
+			if (enemiesType == 9) 
+				enemiesType += 1;
+
+		}
+
+		if(gm.porcupine >= 2){
+
+			if(enemiesType ==10)
+				enemiesType = 1;
+
+		}
+	}
+
 
 
 

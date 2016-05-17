@@ -42,7 +42,6 @@ public class cowBoyScript : MonoBehaviour {
 
 		runAwaybool = true;
 
-
 	}
 
 	// Update is called once per frame
@@ -103,9 +102,8 @@ public class cowBoyScript : MonoBehaviour {
 
 
 	void runAway(){
-
 		lookforward =  Quaternion.Euler (0f, 90f, 0f);
-	
+		print ("moving");
 
 		transform.Translate (Vector3.forward * movingSpeed * Time.deltaTime);
 

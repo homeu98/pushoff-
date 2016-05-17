@@ -108,6 +108,8 @@ public void StartMoving(float thrustForce){
 		if (onGround) {
 			rb.AddForce (transform.forward * thrustForce);
 		}
+
+		gm.SendMessage ("jumped", null, SendMessageOptions.DontRequireReceiver);
 	}
 
 	public void StartRotation(float HorizontalInput){

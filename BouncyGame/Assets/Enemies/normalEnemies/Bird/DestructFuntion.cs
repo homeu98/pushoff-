@@ -18,9 +18,9 @@ public class DestructFuntion : MonoBehaviour {
 
 	}
 
-	void OnCollisionEnter(Collision other){
-		if(other.collider.CompareTag("Player")){
-			other.collider.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
+	void OnTriggerEnter(Collider other){
+		if(other.CompareTag("Player")){
+			other.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
 		}
 	}
 }

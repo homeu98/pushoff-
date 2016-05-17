@@ -25,7 +25,10 @@ public class homingMissleScript : MonoBehaviour {
 	}
 
 
+	void OnCollisionEnter(Collision other){
 
+		Destroy (this.gameObject);
+	}
 
 
 }
