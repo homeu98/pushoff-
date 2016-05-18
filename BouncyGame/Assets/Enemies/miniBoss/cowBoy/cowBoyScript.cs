@@ -52,9 +52,9 @@ public class cowBoyScript : MonoBehaviour {
 			runAway ();
 			print ("runing");
 		}
-		if(!runAwaybool)
+		if (!runAwaybool) {
 			transform.LookAt (player.transform);
-
+		}
 		bulletPlusPosition = this.transform.position.y - 1.0f;
 		bulletPosition = new Vector3(this.transform.position.x,this.transform.position.y, this.transform.position.z - 1.0f);
 		bulletLeftRotation = Quaternion.Euler (0f, 145f, 0f);
