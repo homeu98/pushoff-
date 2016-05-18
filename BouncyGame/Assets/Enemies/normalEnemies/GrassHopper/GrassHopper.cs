@@ -9,6 +9,10 @@ public class GrassHopper : MonoBehaviour {
 	public static bool onGround = false;
 	Rigidbody rb;
 	GameManager gm;
+	GameObject player;
+	Vector3 playerPosition;
+	bool jump;
+	public float step;
 
 	// Use this for initialization
 	void Start () {
@@ -18,18 +22,32 @@ public class GrassHopper : MonoBehaviour {
 		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
 
 		gm.SendMessage ("nGrassHopper", 1, SendMessageOptions.DontRequireReceiver);
+
+		player = GameObject.FindWithTag ("Player");
+
+		StartCoroutine ("jumpingPause");
 	}
+
+
 	
 	// Update is called once per frame
 	void Update () {
-		if(onGround){
+		/*if(onGround){
 			if(Time.time > NextJumpTime){
 				Vector2 JumpDirection = Random.insideUnitCircle * CircleRadius - (Vector2)transform.position;
 				rb.velocity = new Vector3 (JumpDirection.x , JumpForce, JumpDirection.y );
 				onGround = false;
 				NextJumpTime += period;
 			}
+		}*/
+
+		if (jump && onGround == true) {
+
+			jumping ();
 		}
+
+		print (jump);
+
 	}
 
 	void OnCollisionEnter(Collision other){
@@ -37,10 +55,44 @@ public class GrassHopper : MonoBehaviour {
 			
 			onGround = true;
 		}
-		if(other.collider.CompareTag("Player") && transform.position.y >= 0.8f){
+		if(other.collider.CompareTag("Player") && transform.position.y >= 0.8f ){
 			other.collider.SendMessage ("die", null,SendMessageOptions.DontRequireReceiver);
 		}
+
+		if (jump) {
+			other.collider.SendMessage ("die", null,SendMessageOptions.DontRequireReceiver);
+
+		}
+
 	}
 
+
+	IEnumerator jumpingPause(){
+
+		yield return new WaitForSeconds (1);
+
+		playerPosition = player.transform.position;
+
+		rb.AddForce (Vector3.up * JumpForce);
+
+		jump = true;
+
+		yield return new WaitForSeconds (1f);
+
+		jump = false;
+
+		StartCoroutine ("jumpingPause");
+
+
+	}
+
+
+	void jumping(){
+
+
+		transform.position = Vector3.MoveTowards (transform.position, playerPosition, step);
+
+
+	}
 
 }

@@ -7,7 +7,7 @@ public class spawningScript : MonoBehaviour {
 
 	public GameObject[] SpawningPosition, spawningPositionSide, spawningPositionPair;
 
-	public GameObject miniBossSpawnPoint;
+	public GameObject miniBossSpawnPoint, birdSpawnPoint;
 
 	private spawningStatus eType = spawningStatus.normalEnemies;
 
@@ -95,9 +95,13 @@ public class spawningScript : MonoBehaviour {
 		}
 	}
 
-
 	void chooseType(spawningStatus whatStatus){
 
+		if (miniBossHere) {
+
+			StartCoroutine ("pauseSpawning");
+		}
+	
 		progressBarCurrent ();
 
 		switch (eType) {
@@ -315,7 +319,7 @@ public class spawningScript : MonoBehaviour {
 
 
 
-		Instantiate (bird [teamNumberBird], SpawningPosition[spawningNumber].transform.position, bird [teamNumberBird].transform.rotation);
+		Instantiate (bird [teamNumberBird], birdSpawnPoint.transform.position , bird [teamNumberBird].transform.rotation);
 
 
 	}
