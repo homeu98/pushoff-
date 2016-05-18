@@ -2,13 +2,11 @@
 using System.Collections;
 
 public class Looper : MonoBehaviour {
-	 int numberOfObject;
-	float HeightOfGrid;
+	float numberOfObject;
 
 	// Use this for initialization
 	void Start () {
-		numberOfObject = 5;
-		HeightOfGrid = 4f;
+		numberOfObject = Grid.instance.Height;
 	}
 
 	// Update is called once per frame
@@ -19,7 +17,7 @@ public class Looper : MonoBehaviour {
 	void OnTriggerEnter(Collider other){
 		if(other.CompareTag("grid")){
 			Vector3 gridPos = other.transform.position;
-			gridPos.z += numberOfObject * HeightOfGrid/*other.GetComponent<BoxCollider> ().size.z*/;
+			gridPos.z += numberOfObject * other.GetComponent<BoxCollider> ().size.z;
 			other.transform.position = gridPos;
 		}
 	
