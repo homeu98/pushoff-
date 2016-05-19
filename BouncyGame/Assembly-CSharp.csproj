@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Unity3D/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Unity3D/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +52,7 @@
      <Compile Include="Assets\Enemies\boss\rocketGuy\airStrikeBullet.cs" />
      <Compile Include="Assets\Enemies\boss\rocketGuy\homingMissleScript.cs" />
      <Compile Include="Assets\Enemies\boss\rocketGuy\rocketGuyScript.cs" />
+     <Compile Include="Assets\Enemies\deadScript.cs" />
      <Compile Include="Assets\Enemies\deathScript.cs" />
      <Compile Include="Assets\Enemies\miniBoss\buffalo\buffalo.cs" />
      <Compile Include="Assets\Enemies\miniBoss\bunny\bunnyAttacScript.cs" />
@@ -60,11 +61,17 @@
      <Compile Include="Assets\Enemies\miniBoss\cowBoy\cowBoyScript.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\Bear\Bear.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\Big Foot\BigFoot.cs" />
-     <Compile Include="Assets\Enemies\normalEnemies\Bird\birdScript.cs" />
-     <Compile Include="Assets\Enemies\normalEnemies\Bird\birdShitScript.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\Bird.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\BulletSystem.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\DestructFuntion.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\EditorPathSCript.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\GetPath.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\MoveOnPathScript.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\PlayerTransform.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\ShitBoomer.cs" />
+     <Compile Include="Assets\Enemies\normalEnemies\Bird\TestManager.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\Boar\Boar.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\GrassHopper\GrassHopper.cs" />
-     <Compile Include="Assets\Enemies\normalEnemies\Porcupine\BulletSystem.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\Porcupine\Porcupine.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\Porcupine\destructBoomer.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\Skunk\Shunk.cs" />
@@ -74,11 +81,13 @@
      <Compile Include="Assets\Enemies\normalEnemies\graveYard\graveYardScript.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\graveYard\skeletonScript.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\turtle\turtleScript.cs" />
+     <Compile Include="Assets\SceneSetting.cs" />
      <Compile Include="Assets\UI\UIcoin.cs" />
      <Compile Include="Assets\UI\UIenemiesKilled.cs" />
      <Compile Include="Assets\UI\progressBar.cs" />
      <Compile Include="Assets\cameraMovingScript.cs" />
      <Compile Include="Assets\chain.cs" />
+     <Compile Include="Assets\changingSystem.cs" />
      <Compile Include="Assets\droppingRock.cs" />
      <Compile Include="Assets\environment\Destroyer.cs" />
      <Compile Include="Assets\items\Coin\coin.cs" />
@@ -95,10 +104,10 @@
      <Compile Include="Assets\script\VirtualJoystick.cs" />
      <Compile Include="Assets\script\spawningScript.cs" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

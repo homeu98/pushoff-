@@ -21,9 +21,9 @@ public class progressBar : MonoBehaviour {
 	
 	}
 
-	void add(int number){
+	void add(){
 
-		slider.value += number;
+		slider.value += 1;
 
 	}
 

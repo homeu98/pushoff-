@@ -7,19 +7,26 @@ public class GameManager : MonoBehaviour {
 	public int buffalo, bear, bigFoot, bird, boar, bunny, cowBoy, crazyChicken, fireFox, grassHopper, porcupine, skunk;
 	int totalNumber;
 	GameObject mainCamera;
+	GameManager gm;
+	progressBar pb;
 
-	public int numbersOfKill, coin;
+	public int numbersOfKill, coin, numberOfEnemiesSpawned;
 
 	void Start(){
 
-
+		pb = GameObject.FindWithTag ("progressBar").GetComponent<progressBar> ();
+		gm = GameObject.FindWithTag ("GM").GetComponent<GameManager> ();
 
 	}
 
 	void Update(){
 
 		mainCamera = GameObject.FindWithTag ("MainCamera");
-		currentNumbersOfEnemies ();
+		miniBossIsHere ();
+		print ("number of enemies" + numberOfEnemiesSpawned);
+	}
+
+	void miniBossIsHere(){
 
 		if (GameObject.FindWithTag ("miniBoss")) {
 
@@ -33,116 +40,53 @@ public class GameManager : MonoBehaviour {
 		}
 	}
 
-	public void currentNumbersOfEnemies(){
 
-		totalNumber = bear + bigFoot + bird + boar + bunny + cowBoy + crazyChicken + fireFox + grassHopper + porcupine + skunk;
-		//print (totalNumber);
+	void newEnemies(string tag){
 
-	}
+		if (numberOfEnemiesSpawned == 100) {
 
-	void nOfKill(int killAdd){
-
-		numbersOfKill += killAdd;
-
-	}
-
-	void nBear(int add){
-
-		bear += add;
+			gm.SendMessage ("progressBarCurrent", 3, SendMessageOptions.DontRequireReceiver);
 
 
-	}
+		}else if (numberOfEnemiesSpawned % 10 == 0 && numberOfEnemiesSpawned != 0) {
 
-	void nBigFoot(int add){
+			gm.SendMessage ("progressBarCurrent", 2, SendMessageOptions.DontRequireReceiver);
 
-		bigFoot += add;
+		} else {
+
+			gm.SendMessage ("progressBarCurrent", 1, SendMessageOptions.DontRequireReceiver);
+
+		}
 
 
-	}
 
-	void nBird(int add){
+		if (tag == "enemy") {
 
-		bird += add;
+			numberOfEnemiesSpawned += 1;
+
+			pb.SendMessage ("add", null, SendMessageOptions.DontRequireReceiver);
+
+		}
 
 
 	}
 
-	void nBoar(int add){
+	void deadEnemies(string tag){
 
-		boar += add;
+		if (tag == "enemy") {
 
-	
+			numbersOfKill += 1;
 
+		}
 
-	}
+		if (tag == "boss") {
 
-	void nBunny(int add){
+			numberOfEnemiesSpawned = 0;
 
-		bunny += add;
-
-
-
+		}
 
 	}
 
-	void nCowBoy(int add){
-
-		cowBoy += add;
-
-
-
-	}
-
-
-	void ncrazyChicken(int add){
-
-		crazyChicken += add;
-
-
-
-
-
-	}
-
-	void nFireFox(int add){
-		
-		fireFox += add;
-
-
-
-
-	}
-
-
-	void nGrassHopper(int add){
-
-		grassHopper += add;
-
-
-	}
-
-
-	void nPorcupine(int add){
-
-		porcupine += add;
-
-
-
-	}
-
-	void nSkunk(int add){
-
-		skunk += add;
-
-
-
-	}
-
-	void nBuffalo(int add){
-
-		buffalo += add;
-
-	}
 
 	void addCoin(){
 
