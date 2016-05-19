@@ -7,7 +7,7 @@ public class spawningScript : MonoBehaviour {
 
 	public GameObject[] SpawningPosition, spawningPositionSide, spawningPositionPair;
 
-	public GameObject miniBossSpawnPoint, birdSpawnPoint;
+	public GameObject miniBossSpawnPoint;
 
 	private spawningStatus eType = spawningStatus.normalEnemies;
 
@@ -79,32 +79,34 @@ public class spawningScript : MonoBehaviour {
 	}
 		
 
-	void progressBarCurrent(){
+	void progressBarCurrent(int whatToSpawn){
 
-		if (progressBar.value == 100) {
+		if (whatToSpawn == 1) {
+
+			eType = spawningStatus.normalEnemies;
+		} else if (whatToSpawn == 2) {
+
+			eType = spawningStatus.miniBoss;
+		} else if (whatToSpawn == 3) {
 
 			eType = spawningStatus.boss;
 
-		} else if (progressBar.value % 10 == 0 && progressBar.value != 100 && progressBar.value != 0) {
-
-			eType = spawningStatus.miniBoss;
-
-		}else{
-
-			eType = spawningStatus.normalEnemies;
 		}
+
 	}
+
 
 	void chooseType(spawningStatus whatStatus){
 
-		if (miniBossHere) {
-
+<<<<<<< HEAD
 			StartCoroutine ("pauseSpawning");
-		}
-	
+=======
 		progressBarCurrent ();
+>>>>>>> origin/master
 
-		switch (eType) {
+
+
+		switch (whatStatus) {
 
 		case spawningStatus.normalEnemies:
 			StartCoroutine ("whatToSpawn");
@@ -129,7 +131,7 @@ public class spawningScript : MonoBehaviour {
 	IEnumerator whatToSpawn(){
 
 
-		doNotSpawnTheSameThing ();
+		//doNotSpawnTheSameThing ();
 
 		if (eType == spawningStatus.boss) {
 
@@ -317,10 +319,14 @@ public class spawningScript : MonoBehaviour {
 
 	void spawningBird(int teamNumberBird){
 
+<<<<<<< HEAD
+		Instantiate (bird [teamNumberBird], birdSpawnPoint.transform.position, bird [teamNumberBird].transform.rotation);
+=======
 
 
-		Instantiate (bird [teamNumberBird], birdSpawnPoint.transform.position , bird [teamNumberBird].transform.rotation);
+		Instantiate (bird [teamNumberBird], SpawningPosition[spawningNumber].transform.position, bird [teamNumberBird].transform.rotation);
 
+>>>>>>> origin/master
 
 	}
 		
