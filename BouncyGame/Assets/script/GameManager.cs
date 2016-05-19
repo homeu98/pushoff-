@@ -4,7 +4,7 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	public int buffalo, bear, bigFoot, bird, boar, bunny, cowBoy, crazyChicken, fireFox, grassHopper, porcupine, skunk;
+	//public int buffalo, bear, bigFoot, bird, boar, bunny, cowBoy, crazyChicken, fireFox, grassHopper, porcupine, skunk;
 	int totalNumber;
 	GameObject mainCamera;
 	GameManager gm;

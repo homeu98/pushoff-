@@ -7,7 +7,7 @@ public class spawningScript : MonoBehaviour {
 
 	public GameObject[] SpawningPosition, spawningPositionSide, spawningPositionPair;
 
-	public GameObject miniBossSpawnPoint;
+	public GameObject miniBossSpawnPoint, birdSpawnPoint;
 
 	private spawningStatus eType = spawningStatus.normalEnemies;
 
@@ -98,13 +98,8 @@ public class spawningScript : MonoBehaviour {
 
 	void chooseType(spawningStatus whatStatus){
 
-<<<<<<< HEAD
+
 			StartCoroutine ("pauseSpawning");
-=======
-		progressBarCurrent ();
->>>>>>> origin/master
-
-
 
 		switch (whatStatus) {
 
@@ -206,7 +201,6 @@ public class spawningScript : MonoBehaviour {
 
 		case 6:
 			int teamFireFox = Random.Range (0, fireFox.Length);
-
 
 			//print ("spawningFireFox");
 			spawningfireFox (teamFireFox);
@@ -319,14 +313,12 @@ public class spawningScript : MonoBehaviour {
 
 	void spawningBird(int teamNumberBird){
 
-<<<<<<< HEAD
 		Instantiate (bird [teamNumberBird], birdSpawnPoint.transform.position, bird [teamNumberBird].transform.rotation);
-=======
+
 
 
 		Instantiate (bird [teamNumberBird], SpawningPosition[spawningNumber].transform.position, bird [teamNumberBird].transform.rotation);
 
->>>>>>> origin/master
 
 	}
 		
@@ -364,84 +356,6 @@ public class spawningScript : MonoBehaviour {
 
 
 	}
-
-
-
-
-	void doNotSpawnTheSameThing(){
-
-		// here to set the limit of each enemies spawning number
-
-		if (gm.crazyChicken >= 5) {
-
-			if (enemiesType == 1) 
-				enemiesType += 1;
-		}
-
-
-		if (gm.bear >= 2) {
-
-			if (enemiesType == 2) 
-				enemiesType += 1;
-
-		}
-
-		if (gm.bigFoot >= 2) {
-
-			if (enemiesType == 3) 
-				enemiesType += 1;
-		}
-
-		if (gm.boar >= 5) {
-
-			if (enemiesType == 4) 
-				enemiesType += 1;
-
-		}
-
-		if (gm.bird >= 1) {
-
-			if (enemiesType == 5)
-				enemiesType += 1;
-
-		}
-
-		if (gm.bunny >= 2) {
-
-			if (enemiesType == 6) 
-				enemiesType += 1;
-
-		}
-
-		if (gm.cowBoy >= 2) {
-
-			if (enemiesType == 7)
-				enemiesType += 1;
-
-		}
-
-		if(gm.fireFox >= 2){
-
-			if (enemiesType == 8) 
-				enemiesType += 1;
-
-		}
-
-		if(gm.grassHopper>= 1){
-
-			if (enemiesType == 9) 
-				enemiesType += 1;
-
-		}
-
-		if(gm.porcupine >= 2){
-
-			if(enemiesType ==10)
-				enemiesType = 1;
-
-		}
-	}
-
 
 
 

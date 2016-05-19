@@ -1,26 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-<<<<<<< HEAD
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\script\spawningScript.cs">
     <Files>
-      <File FileName="Assets\script\spawningScript.cs" Line="319" Column="3" />
-      <File FileName="Assets\changingSystem.cs" Line="45" Column="4" />
-      <File FileName="Assets\script\Looper.cs" Line="1" Column="1" />
-=======
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\changingSystem.cs">
-    <Files>
-      <File FileName="Assets\changingSystem.cs" Line="41" Column="36" />
-      <File FileName="Assets\script\Looper.cs" Line="21" Column="45" />
->>>>>>> origin/master
-      <File FileName="Assets\Enemies\boss\rocketGuy\rocketGuyScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\deathScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\boss\rocketGuy\homingMissleScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\miniBoss\bunny\homingCarrot.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\boss\fatGuy\fatGuyScript.cs" Line="1" Column="1" />
-<<<<<<< HEAD
+      <File FileName="Assets\script\spawningScript.cs" Line="361" Column="1" />
       <File FileName="Assets\script\GameManager.cs" Line="1" Column="1" />
-=======
->>>>>>> origin/master
+      <File FileName="Assets\Enemies\normalEnemies\Porcupine\Porcupine.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
