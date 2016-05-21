@@ -6,13 +6,16 @@ public class GameManager : MonoBehaviour {
 
 	//public int buffalo, bear, bigFoot, bird, boar, bunny, cowBoy, crazyChicken, fireFox, grassHopper, porcupine, skunk;
 	int totalNumber;
-	GameObject mainCamera;
+	GameObject mainCamera, player;
 	GameManager gm;
+
 	progressBar pb;
 
 	public int numbersOfKill, coin, numberOfEnemiesSpawned;
 
 	void Start(){
+
+		player = GameObject.FindWithTag ("Player");
 
 		pb = GameObject.FindWithTag ("progressBar").GetComponent<progressBar> ();
 		gm = GameObject.FindWithTag ("GM").GetComponent<GameManager> ();
@@ -93,14 +96,37 @@ public class GameManager : MonoBehaviour {
 		coin += 1;
 
 	}
-		
 
-	void jumped(){
+	public void holdingDown(){
+
+		player.SendMessage ("holdingButton", null, SendMessageOptions.DontRequireReceiver);
+
+	}
+
+	public void jumpLeft(){
+
+		player.SendMessage ("movingLeft", null, SendMessageOptions.DontRequireReceiver);
 
 		GameObject graveYard = GameObject.FindWithTag ("graveYard");
 
 		if (graveYard != null) {
 			graveYard.SendMessage ("addUp", null, SendMessageOptions.DontRequireReceiver);
 		}
+	}
+
+	public void jumpRight(){
+
+		player.SendMessage ("movingRight", null, SendMessageOptions.DontRequireReceiver);
+
+		GameObject graveYard = GameObject.FindWithTag ("graveYard");
+
+		if (graveYard != null) {
+			graveYard.SendMessage ("addUp", null, SendMessageOptions.DontRequireReceiver);
+		}
+	}
+
+	void jumped(){
+
+	
 	}
 }

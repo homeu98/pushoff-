@@ -102,11 +102,10 @@ public class StandalonePlayer : MonoBehaviour {
 
 
 
-	void movingLeft(float rotationToLeft){
+	void movingLeft(){
 
 
 		transform.FindChild("playerModel").SendMessage("moved", null, SendMessageOptions.DontRequireReceiver);
-		gm.SendMessage ("jumped", null, SendMessageOptions.DontRequireReceiver);
 
 			currentAngle = new Vector3 (
 				Mathf.LerpAngle (currentAngle.x, currentAngle.x, Time.deltaTime),
@@ -123,10 +122,9 @@ public class StandalonePlayer : MonoBehaviour {
 
 	}
 
-	void movingRight(float rotationToRight){
+	void movingRight(){
 
 		transform.FindChild("playerModel").SendMessage("moved", null, SendMessageOptions.DontRequireReceiver);
-		gm.SendMessage ("jumped", null, SendMessageOptions.DontRequireReceiver);
 
 		currentAngle = new Vector3 (
 			Mathf.LerpAngle (currentAngle.x, currentAngle.x, Time.deltaTime),
