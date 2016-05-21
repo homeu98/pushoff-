@@ -6,6 +6,8 @@ public class deadScript : MonoBehaviour {
 
 	GameManager gm;
 
+	bool beingPushed;
+
 	// Use this for initialization
 	void Start () {
 
@@ -20,10 +22,28 @@ public class deadScript : MonoBehaviour {
 	
 	}
 
-	void dead(){
+	void dead(bool beingPush){
+
+		if (beingPush) {
+
+			beingPushed = true;
+
+		}
 
 		gm.SendMessage ("deadEnemies", this.gameObject.tag, SendMessageOptions.DontRequireReceiver);
-		Destroy (this.gameObject);
+		//Destroy (this.gameObject);
+
+
+	}
+
+	void OnCollisionEnter(Collision c){
+
+		if (beingPushed && c.gameObject.tag != "Player" && c.gameObject.tag != "grid") {
+
+			//c.gameObject.SendMessage ("dead", true, SendMessageOptions.DontRequireReceiver);
+			Destroy (this.gameObject);
+
+		}
 
 
 	}

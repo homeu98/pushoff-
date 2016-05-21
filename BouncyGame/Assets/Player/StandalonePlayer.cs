@@ -34,7 +34,7 @@ public class StandalonePlayer : MonoBehaviour {
 	void Update () {
 
 
-
+		print (onGround);
 	}
 
 
@@ -53,6 +53,8 @@ public class StandalonePlayer : MonoBehaviour {
 			dir = dir.normalized;
 
 			c.rigidbody.AddForce (dir * force);
+			c.gameObject.SendMessage ("dead", true, SendMessageOptions.DontRequireReceiver);
+
 		}
 	}
 		

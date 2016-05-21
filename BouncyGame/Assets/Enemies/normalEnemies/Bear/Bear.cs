@@ -2,52 +2,49 @@
 using System.Collections;
 
 public class Bear : MonoBehaviour {
-	public float ViewRadius = 3f;
-	public LayerMask playerMask;
-	public float ChaseTime = 4f;
-	public float rotationSpeed = 3f;
-	public float Speed =2f;
-	public  float runAwayTime;
+
+
+	public  float runAwayTime, runAwaySpeed, chasingSpeed;
 	GameObject player;
 	GameManager gm;
-
+	SphereCollider lookZone;
+	bool startChasing = false;
 
 
 	// Use this for initialization
 	void Start () {
-		runAwayTime = Time.time + ChaseTime;
 		 player = GameObject.FindGameObjectWithTag ("Player");
 		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-
-		gm.SendMessage ("nBear", 1, SendMessageOptions.DontRequireReceiver);
-
-	
+		lookZone = GetComponent<SphereCollider> ();
 
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
+		if (startChasing) {
 
-		if (Physics.CheckSphere (transform.position, ViewRadius, playerMask)) {
-			if (Time.time > runAwayTime)
-				return;
+			//transform.LookAt (player.transform);
+			transform.position = Vector3.MoveTowards (transform.position, player.transform.position, chasingSpeed);
 
-			Quaternion rotation = Quaternion.LookRotation (player.transform.position - transform.position);
-
-			Vector3 zEulerAngles = rotation.eulerAngles;
-			zEulerAngles = new Vector3 (0f, rotation.eulerAngles.y, 0f);
-			rotation.eulerAngles = zEulerAngles;
-		
-			transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * rotationSpeed);
-
-			transform.Translate (Vector3.forward * Time.deltaTime * Speed);
-		} else {
-
-			transform.Translate (Vector3.forward * Time.deltaTime * Speed);
 
 		}
-	
+
+		if (!startChasing) {
+
+			Vector3 endPoint = new Vector3 (3f, 1.3f, -4f);
+			transform.position = Vector3.MoveTowards (transform.position, endPoint, runAwaySpeed);
+
+
+		}
+
+	}
+
+	IEnumerator chasing(){
+
+		yield return new WaitForSeconds (runAwayTime);
+
+		startChasing = false;
 
 	}
 
@@ -57,4 +54,15 @@ public class Bear : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter(Collider other){
+
+		if (other.tag == "Player") {
+
+			StartCoroutine ("chasing");
+			startChasing = true;
+
+		}
+
+
+	}
 }

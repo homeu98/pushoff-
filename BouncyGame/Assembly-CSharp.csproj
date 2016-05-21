@@ -75,6 +75,9 @@
      <Compile Include="Assets\Enemies\normalEnemies\graveYard\graveYardScript.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\graveYard\skeletonScript.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\turtle\turtleScript.cs" />
+     <Compile Include="Assets\Player\NewBehaviourScript.cs" />
+     <Compile Include="Assets\Player\StandalonePlayer.cs" />
+     <Compile Include="Assets\Player\playerModelAnimationScript.cs" />
      <Compile Include="Assets\SceneSetting.cs" />
      <Compile Include="Assets\UI\UIcoin.cs" />
      <Compile Include="Assets\UI\UIenemiesKilled.cs" />
@@ -82,11 +85,13 @@
      <Compile Include="Assets\cameraMovingScript.cs" />
      <Compile Include="Assets\chain.cs" />
      <Compile Include="Assets\changingSystem.cs" />
+     <Compile Include="Assets\controlScript\controlScript.cs" />
      <Compile Include="Assets\droppingRock.cs" />
      <Compile Include="Assets\environment\Destroyer.cs" />
      <Compile Include="Assets\items\Coin\coin.cs" />
      <Compile Include="Assets\items\Coin\droppingCoin.cs" />
      <Compile Include="Assets\platformSpawningTrigger.cs" />
+     <Compile Include="Assets\playerScript.cs" />
      <Compile Include="Assets\script\CameraForcePlayer.cs" />
      <Compile Include="Assets\script\CameraTricker.cs" />
      <Compile Include="Assets\script\GameManager.cs" />
@@ -94,7 +99,6 @@
      <Compile Include="Assets\script\Looper.cs" />
      <Compile Include="Assets\script\MultidimensionalArray.cs" />
      <Compile Include="Assets\script\PoolManager.cs" />
-     <Compile Include="Assets\script\StandalonePlayer.cs" />
      <Compile Include="Assets\script\VirtualJoystick.cs" />
      <Compile Include="Assets\script\spawningScript.cs" />
  <Reference Include="UnityEngine.UI">
