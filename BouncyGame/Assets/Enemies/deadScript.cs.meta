@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 872ed008a0edd0046af88e0021531d74
-timeCreated: 1463591586
+timeCreated: 1463933494
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - coin: {fileID: 182894, guid: 08499f60c8c2740f682f3fdd520b30df, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

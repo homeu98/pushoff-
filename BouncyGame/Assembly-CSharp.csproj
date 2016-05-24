@@ -81,11 +81,15 @@
      <Compile Include="Assets\SceneSetting.cs" />
      <Compile Include="Assets\UI\UIcoin.cs" />
      <Compile Include="Assets\UI\UIenemiesKilled.cs" />
+     <Compile Include="Assets\UI\characterSelectAnimScript.cs" />
+     <Compile Include="Assets\UI\characterSelectScript.cs" />
+     <Compile Include="Assets\UI\characterSelectedScript.cs" />
+     <Compile Include="Assets\UI\controlScript\controlScript.cs" />
+     <Compile Include="Assets\UI\playOrPurcahseScript.cs" />
      <Compile Include="Assets\UI\progressBar.cs" />
-     <Compile Include="Assets\cameraMovingScript.cs" />
+     <Compile Include="Assets\camera\cameraMovingScript.cs" />
      <Compile Include="Assets\chain.cs" />
      <Compile Include="Assets\changingSystem.cs" />
-     <Compile Include="Assets\controlScript\controlScript.cs" />
      <Compile Include="Assets\droppingRock.cs" />
      <Compile Include="Assets\environment\Destroyer.cs" />
      <Compile Include="Assets\items\Coin\coin.cs" />
@@ -100,6 +104,7 @@
      <Compile Include="Assets\script\MultidimensionalArray.cs" />
      <Compile Include="Assets\script\PoolManager.cs" />
      <Compile Include="Assets\script\VirtualJoystick.cs" />
+     <Compile Include="Assets\script\playerPerfs.cs" />
      <Compile Include="Assets\script\spawningScript.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

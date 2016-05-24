@@ -7,6 +7,7 @@ public class deadScript : MonoBehaviour {
 	GameManager gm;
 
 	bool beingPushed;
+	public GameObject coin;
 
 	// Use this for initialization
 	void Start () {
@@ -40,7 +41,9 @@ public class deadScript : MonoBehaviour {
 
 		if (beingPushed && c.gameObject.tag != "Player" && c.gameObject.tag != "grid") {
 
+			int randomCoinNumber = Random.Range (0, 3);
 			//c.gameObject.SendMessage ("dead", true, SendMessageOptions.DontRequireReceiver);
+			Instantiate(coin, transform.position, coin.transform.rotation);
 			Destroy (this.gameObject);
 
 		}

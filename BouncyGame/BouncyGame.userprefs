@@ -1,18 +1,12 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Enemies\normalEnemies\GrassHopper\GrassHopper.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\UI\characterSelectScript.cs">
     <Files>
-      <File FileName="Assets\Enemies\deadScript.cs" Line="47" Column="3" />
-      <File FileName="Assets\script\CameraForcePlayer.cs" Line="13" Column="1" />
-      <File FileName="Assets\script\spawningScript.cs" Line="152" Column="1" />
-      <File FileName="Assets\script\GameManager.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\normalEnemies\Porcupine\Porcupine.cs" Line="1" Column="1" />
-      <File FileName="Assets\Player\StandalonePlayer.cs" Line="63" Column="3" />
-      <File FileName="Assets\Enemies\normalEnemies\Bear\Bear.cs" Line="42" Column="1" />
-      <File FileName="Assets\Enemies\normalEnemies\GrassHopper\GrassHopper.cs" Line="45" Column="3" />
-      <File FileName="Assets\Enemies\normalEnemies\turtle\turtleScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\normalEnemies\fireFox\fireFoxAttack.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\normalEnemies\crazyChicken\crazyChickenScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\UI\characterSelectScript.cs" Line="40" Column="3" />
+      <File FileName="Assets\Enemies\deadScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\script\spawningScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\UI\characterSelectAnimScript.cs" Line="25" Column="4" />
+      <File FileName="Assets\UI\playOrPurcahseScript.cs" Line="37" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

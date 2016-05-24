@@ -314,11 +314,7 @@ public class spawningScript : MonoBehaviour {
 	void spawningBird(int teamNumberBird){
 
 		Instantiate (bird [teamNumberBird], birdSpawnPoint.transform.position, bird [teamNumberBird].transform.rotation);
-
-
-
-		Instantiate (bird [teamNumberBird], SpawningPosition[spawningNumber].transform.position, bird [teamNumberBird].transform.rotation);
-
+	
 
 	}
 		
