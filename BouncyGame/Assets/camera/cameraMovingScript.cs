@@ -11,7 +11,7 @@ public class cameraMovingScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		
 
 	}
 	

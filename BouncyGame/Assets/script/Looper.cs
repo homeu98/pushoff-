@@ -1,25 +1,64 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Looper : MonoBehaviour {
-	 int numberOfObject;
-	float HeightOfGrid;
+	 int numberOfObject = 5;
+	float HeightOfGrid = 4f;
+	float percentageOfPlatform;
 
-	// Use this for initialization
-	void Start () {
-		numberOfObject = 5;
-		HeightOfGrid = 4f;
+	int NoOfPlatform;
+
+	public	GameObject[] TotalPlatform;
+	public List<GameObject> TypeOfPlatform = new List<GameObject> ();
+
+	[Range(1f,100f)]public float percentageOfBridge;
+	//[Range(1f,100f)]  float percentageOfRoad;
+
+	void Awake(){
+		percentageOfPlatform = Random.Range (1f,100f);
+		NoOfPlatform = Random.Range (0,5);
 	}
 
-	// Update is called once per frame
+	void Start () {
+		if(percentageOfPlatform <= percentageOfBridge){
+			Vector3 POS = TotalPlatform [NoOfPlatform].transform.position;
+			Destroy (TotalPlatform[NoOfPlatform],0f);
+			Instantiate (TypeOfPlatform [0], POS, Quaternion.identity);
+		}
+	}
+		
 
 	void OnTriggerEnter(Collider other){
-		if(other.CompareTag("grid")){
+		 percentageOfPlatform = Random.Range (1f,100f);
+		if(other.gameObject.layer == 12){
+			//print ("OK");
 			Vector3 gridPos = other.transform.position;
 			gridPos.z += numberOfObject * HeightOfGrid/*other.GetComponent<BoxCollider> ().size.z*/;
-			other.transform.position = gridPos;
-			other.gameObject.SendMessage ("ChangeTree", null, SendMessageOptions.DontRequireReceiver);
-		}
-	
+			//other.transform.position = gridPos;
+
+			if (other.CompareTag ("grid")) {
+				if (percentageOfPlatform <= percentageOfBridge) {
+					Destroy (other.gameObject, 0f);
+					Instantiate (TypeOfPlatform [0], gridPos, Quaternion.identity);
+				} else {
+					other.transform.position = gridPos;
+					other.gameObject.SendMessage ("ChangeTree", null, SendMessageOptions.DontRequireReceiver);
+				}
+			}
+
+			if(other.CompareTag("Bridge")){
+				if (percentageOfPlatform > percentageOfBridge) {
+					Destroy (other.gameObject, 0f);
+					Instantiate (TypeOfPlatform [1], gridPos, Quaternion.identity);
+					TypeOfPlatform [1].gameObject.SendMessage ("ChangeTree", null, SendMessageOptions.DontRequireReceiver);
+				} else {
+					other.transform.position = gridPos;
+				}
+			}
+		
+			}
 	}
+
+
 }
