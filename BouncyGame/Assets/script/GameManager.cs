@@ -4,7 +4,6 @@ using System.Collections;
 
 public class GameManager : MonoBehaviour {
 
-	//public int buffalo, bear, bigFoot, bird, boar, bunny, cowBoy, crazyChicken, fireFox, grassHopper, porcupine, skunk;
 	int totalNumber;
 	GameObject mainCamera, player;
 	GameManager gm;
@@ -13,12 +12,17 @@ public class GameManager : MonoBehaviour {
 
 	public int numbersOfKill, coin, numberOfEnemiesSpawned;
 
+	public int nKills, nDeath, nHopped;
+
 	void Start(){
 
 		player = GameObject.FindWithTag ("Player");
 
 		pb = GameObject.FindWithTag ("progressBar").GetComponent<progressBar> ();
 		gm = GameObject.FindWithTag ("GM").GetComponent<GameManager> ();
+
+		totalMoney = PlayerPrefs.GetInt ("totalMoney");
+
 
 	}
 
@@ -27,6 +31,8 @@ public class GameManager : MonoBehaviour {
 		mainCamera = GameObject.FindWithTag ("MainCamera");
 		miniBossIsHere ();
 		print ("number of enemies" + numberOfEnemiesSpawned);
+
+		print (totalMoney);
 	}
 
 	void miniBossIsHere(){
@@ -88,12 +94,17 @@ public class GameManager : MonoBehaviour {
 
 		}
 
+		nDeath++;
+		savingData (2);
 	}
 
 
 	void addCoin(){
 
-		coin += 1;
+		coin ++;
+
+		totalMoney += coin;
+		PlayerPrefs.SetInt ("totalMoney", totalMoney);
 
 	}
 
@@ -105,10 +116,13 @@ public class GameManager : MonoBehaviour {
 
 	public void jumpLeft(){
 
+		nHopped++;
+		savingData (3);
+
 		player.SendMessage ("movingLeft", null, SendMessageOptions.DontRequireReceiver);
 
 		GameObject graveYard = GameObject.FindWithTag ("graveYard");
-
+	
 		if (graveYard != null) {
 			graveYard.SendMessage ("addUp", null, SendMessageOptions.DontRequireReceiver);
 		}
@@ -116,6 +130,8 @@ public class GameManager : MonoBehaviour {
 
 	public void jumpRight(){
 
+		nHopped++;
+		savingData (3);
 		player.SendMessage ("movingRight", null, SendMessageOptions.DontRequireReceiver);
 
 		GameObject graveYard = GameObject.FindWithTag ("graveYard");
@@ -123,10 +139,134 @@ public class GameManager : MonoBehaviour {
 		if (graveYard != null) {
 			graveYard.SendMessage ("addUp", null, SendMessageOptions.DontRequireReceiver);
 		}
+
+	}
+		
+		
+	public void achievementUnlocking(){
+
+		//Kills
+		if (getKills == 500) {
+
+			PlayerPrefsX.SetBool ("LegendaryPusher", true);
+			rewardThePlayer (rewardType.characterSkin, 1);
+
+		} else if (getKills == 300) {
+
+			PlayerPrefsX.SetBool ("AmazingPusher", true);
+			rewardThePlayer (rewardType.coins, 300);
+
+
+		} else if (getKills == 200) {
+
+
+			PlayerPrefsX.SetBool ("GreatPusher", true);
+			rewardThePlayer (rewardType.coins, 250);
+
+
+		} else if (getKills == 100) {
+
+			PlayerPrefsX.SetBool ("GoodPusher", true);
+			rewardThePlayer (rewardType.coins, 200);
+
+
+
+		} else if (getKills == 10) {
+
+			PlayerPrefsX.SetBool ("AmateurPusher", true);
+			rewardThePlayer (rewardType.coins, 100);
+
+
+
+		}
+
+
+		//Death
+		if (getDeath == 50) {
+
+			PlayerPrefsX.SetBool ("badPlayer", true);
+			rewardThePlayer (rewardType.coins, 300);
+
+
+		}
+
+		//Hopped
+		if (getHopped == 500) {
+
+			PlayerPrefsX.SetBool ("Hopper", true);
+			rewardThePlayer (rewardType.coins, 100);
+
+		}
+
+
 	}
 
-	void jumped(){
 
-	
+	public enum rewardType{
+
+		coins,
+		characterSkin
+
 	}
+
+	private rewardType type = rewardType.coins;
+
+	public void savingData(int dataNumber){
+
+		switch(dataNumber){
+
+		case 1:
+			PlayerPrefs.SetInt ("nKills", nKills);
+
+			break;
+
+		case 2:
+			PlayerPrefs.SetInt ("nDeath", nDeath);
+
+			break;
+		
+		case 3:
+			PlayerPrefs.SetInt ("nHopped", nHopped);
+
+			break;
+
+		}
+			
+		loadData ();
+
+	}
+
+	public int getKills, getDeath, getHopped;
+
+	void loadData(){
+
+		getKills = PlayerPrefs.GetInt ("nKills");
+		getDeath = PlayerPrefs.GetInt ("nDeath");
+		getHopped = PlayerPrefs.GetInt ("nHopped");
+
+
+		achievementUnlocking ();
+
+	}
+
+	public int totalMoney;
+
+	void rewardThePlayer(rewardType whatType, int amountOfReward){
+
+		if (whatType == rewardType.coins) {
+
+			totalMoney = PlayerPrefs.GetInt ("totalMoney");
+			PlayerPrefs.SetInt ("totalMoney", amountOfReward + totalMoney);
+
+		}
+
+		if (whatType == rewardType.characterSkin) {
+
+			//getSkin
+
+		}
+
+
+	}
+
 }
