@@ -11,13 +11,13 @@ public class cameraMovingScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () {	
+		
+
 		transform.position += Vector3.forward * speed;
 
 
@@ -28,8 +28,7 @@ public class cameraMovingScript : MonoBehaviour {
 
 			speed = 0.005f;
 		}
-
-
+			
 	}
 		
 

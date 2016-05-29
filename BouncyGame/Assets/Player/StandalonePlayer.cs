@@ -21,30 +21,34 @@ public class StandalonePlayer : MonoBehaviour {
 
 	private Vector3 currentAngle;
 
-
-
+	//cant jump when in air
+	bool OnSky=true;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		gm = GameObject.FindWithTag ("GM").GetComponent<GameManager> ();
-		currentAngle = transform.localEulerAngles;
+		//currentAngle = transform.localEulerAngles;
 	}
 	
 
 	void Update () {
-
-
+		onGroundNow ();
 		print (onGround);
 	}
-
-
-
+		
 
 
 	void OnCollisionEnter(Collision c){
 
-		print ("pushing");
+		//----
+		if(c.gameObject.layer==12){
+			OnSky = false;
+			Destroy(GetComponent<Animator> ()) ;
+			currentAngle = transform.localEulerAngles;
+		}
+		//----
 
+		print ("pushing");
 
 		if (c.transform.tag != "grid") {
 
@@ -111,10 +115,10 @@ public class StandalonePlayer : MonoBehaviour {
 
 			currentAngle = new Vector3 (
 				Mathf.LerpAngle (currentAngle.x, currentAngle.x, Time.deltaTime),
-			Mathf.LerpAngle (currentAngle.y, currentAngle.y - turnForce, Time.deltaTime * 10 ),
+				Mathf.LerpAngle (currentAngle.y, currentAngle.y - turnForce, Time.deltaTime * 10 ),
 				Mathf.LerpAngle (currentAngle.z, currentAngle.z, Time.deltaTime));
-				
-			transform.eulerAngles = currentAngle;
+		transform.localEulerAngles = currentAngle;
+
 		if (onGround) {
 			rb.AddForce (transform.forward * thrustForce);
 			onGround = false;
@@ -132,7 +136,7 @@ public class StandalonePlayer : MonoBehaviour {
 			Mathf.LerpAngle (currentAngle.x, currentAngle.x, Time.deltaTime),
 			Mathf.LerpAngle (currentAngle.y, currentAngle.y + turnForce, Time.deltaTime * 10 ),
 			Mathf.LerpAngle (currentAngle.z, currentAngle.z, Time.deltaTime));
-		transform.eulerAngles = currentAngle;
+		transform.localEulerAngles = currentAngle;
 
 		if (onGround) {
 			rb.AddForce (transform.forward * thrustForce);
@@ -142,8 +146,13 @@ public class StandalonePlayer : MonoBehaviour {
 	}
 
 	void onGroundNow(){
-		print ("onGround");
-		onGround = true;
+		
+		if(transform.GetChild(0).transform.localPosition == Vector3.zero && OnSky==false){
+			onGround = true;
+		}
+
+		/*print ("onGround");
+		onGround = true;*/
 
 	}
 
