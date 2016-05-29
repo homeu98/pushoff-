@@ -18,9 +18,13 @@ public class skeletonScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.LookAt (player.transform);
 
-		transform.Translate (Vector3.forward * Time.deltaTime * moveSpeed);
+		Vector3 relativePos = new Vector3(player.transform.position.x , this.transform.position.y , player.transform.position.z) ;
+
+		transform.LookAt (relativePos);
+
+		transform.Translate (Vector3.forward * moveSpeed * Time.deltaTime);
+
 
 	
 	}
@@ -30,13 +34,6 @@ public class skeletonScript : MonoBehaviour {
 		if(other.collider.CompareTag("Player")){
 			print ("OK");
 			other.collider.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
-		}
-
-		if (other.collider.CompareTag ("grid")) {
-
-		} else {
-
-			Destroy (this.gameObject);
 		}
 
 	

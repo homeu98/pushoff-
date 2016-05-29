@@ -50,7 +50,7 @@ public class StandalonePlayer : MonoBehaviour {
 
 		print ("pushing");
 
-		if (c.transform.tag != "grid") {
+		if (c.transform.CompareTag("grid") && c.transform.CompareTag("props")) {
 
 			Vector3 dir = c.contacts [0].point - transform.position;
 

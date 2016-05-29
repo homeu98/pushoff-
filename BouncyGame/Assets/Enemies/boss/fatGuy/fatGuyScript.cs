@@ -71,7 +71,7 @@ public class fatGuyScript : MonoBehaviour {
 		jumpBellyAttack,
 		summorTheBear,
 		spinAttack,
-		resting,
+		resting
 
 	}
 
@@ -219,6 +219,19 @@ public class fatGuyScript : MonoBehaviour {
 		if (eType == fatGuy.resting) {
 
 			health -= 1;
+
+			var fatGuyAttack = (fatGuy)Random.Range (1, 4);
+			eType = fatGuyAttack;
+
+			chooseType (eType);
+
+
+		}
+
+		if (health <= 0) {
+
+			//dead
+			Destroy (this.gameObject);
 
 		}
 
