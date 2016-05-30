@@ -52,6 +52,9 @@
      <Compile Include="Assets\Enemies\boss\rocketGuy\airStrikeBullet.cs" />
      <Compile Include="Assets\Enemies\boss\rocketGuy\homingMissleScript.cs" />
      <Compile Include="Assets\Enemies\boss\rocketGuy\rocketGuyScript.cs" />
+     <Compile Include="Assets\Enemies\boss\wizardKing\magicBallScript.cs" />
+     <Compile Include="Assets\Enemies\boss\wizardKing\thunderCloud.cs" />
+     <Compile Include="Assets\Enemies\boss\wizardKing\wizardKingScript.cs" />
      <Compile Include="Assets\Enemies\deadScript.cs" />
      <Compile Include="Assets\Enemies\deathScript.cs" />
      <Compile Include="Assets\Enemies\miniBoss\buffalo\buffalo.cs" />
