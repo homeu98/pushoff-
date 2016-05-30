@@ -47,12 +47,17 @@
   <ItemGroup>
      <Compile Include="Assets\Enemies\aiJumpingScript.cs" />
      <Compile Include="Assets\Enemies\boss\crazyDog\barkingBullet.cs" />
+     <Compile Include="Assets\Enemies\boss\crazyDog\chain.cs" />
      <Compile Include="Assets\Enemies\boss\crazyDog\crazyDogBoss.cs" />
+     <Compile Include="Assets\Enemies\boss\fatGuy\droppingRock.cs" />
      <Compile Include="Assets\Enemies\boss\fatGuy\fatGuyScript.cs" />
      <Compile Include="Assets\Enemies\boss\rocketGuy\airStrikeBullet.cs" />
      <Compile Include="Assets\Enemies\boss\rocketGuy\homingMissleScript.cs" />
      <Compile Include="Assets\Enemies\boss\rocketGuy\rocketGuyScript.cs" />
+     <Compile Include="Assets\Enemies\boss\rockie\bigRockScript.cs" />
      <Compile Include="Assets\Enemies\boss\rockie\rockieScript.cs" />
+     <Compile Include="Assets\Enemies\boss\rockie\smallRocks.cs" />
+     <Compile Include="Assets\Enemies\boss\rockie\underGroundRockScript.cs" />
      <Compile Include="Assets\Enemies\boss\wizardKing\magicBallScript.cs" />
      <Compile Include="Assets\Enemies\boss\wizardKing\thunderCloud.cs" />
      <Compile Include="Assets\Enemies\boss\wizardKing\wizardKingScript.cs" />
@@ -94,9 +99,7 @@
      <Compile Include="Assets\UI\playOrPurcahseScript.cs" />
      <Compile Include="Assets\UI\progressBar.cs" />
      <Compile Include="Assets\camera\cameraMovingScript.cs" />
-     <Compile Include="Assets\chain.cs" />
      <Compile Include="Assets\changingSystem.cs" />
-     <Compile Include="Assets\droppingRock.cs" />
      <Compile Include="Assets\environment\Destroyer.cs" />
      <Compile Include="Assets\items\Coin\coin.cs" />
      <Compile Include="Assets\items\Coin\droppingCoin.cs" />
