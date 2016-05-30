@@ -41,10 +41,12 @@ public class StandalonePlayer : MonoBehaviour {
 	void OnCollisionEnter(Collision c){
 
 		//----
-		if(c.gameObject.layer==12){
-			OnSky = false;
-			Destroy(GetComponent<Animator> ()) ;
-			currentAngle = transform.localEulerAngles;
+		if(OnSky){
+			if(c.gameObject.layer==12){
+				OnSky = false;
+				Destroy(GetComponent<Animator> ()) ;
+				currentAngle = transform.localEulerAngles;
+			}
 		}
 		//----
 
