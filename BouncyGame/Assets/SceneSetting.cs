@@ -8,10 +8,12 @@ public class SceneSetting : MonoBehaviour {
 
 	void Start () {
 		audio = GetComponent<AudioSource> ();	
+		audio.enabled = PlayerPrefsX.GetBool("IsVolume");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		audio.enabled = SettingSwitch.IsVolume;
+		//audio.enabled = PlayerPrefsX.GetBool("IsVolume");
+
 	}
 }

@@ -10,21 +10,20 @@ public class SettingSwitch : MonoBehaviour {
 	public	  Image DeveloperButton;
 
 
-	public static bool IsVolume = true;
-	public static bool IsVibration =true;
 
-	int s = 1;
-	int v = 1;
-	int d = 1;
 	// Use this for initialization
 	void Start () {
-		
+		SoundButton.color=PlayerPrefsX.GetColor ("SoundColor");
+		VibrationButton.color=PlayerPrefsX.GetColor ("VibrationColor");
+		DeveloperButton.color=PlayerPrefsX.GetColor ("DeveloperColor");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+
 	}
+		
+
 
 	public void BackToStartGame(){
 		
@@ -34,49 +33,56 @@ public class SettingSwitch : MonoBehaviour {
 
 	public void TurnSound(){
 		
-		if (s == 1 ) {
-			print("OK");
-			SoundButton.color = Color.red;
-			IsVolume = false;
-			s = -1;
+		if (PlayerPrefsX.GetBool("IsVolume")) {
+			print("turnToFalse");
+			PlayerPrefsX.SetColor ("SoundColor", Color.red);
+			SoundButton.color=PlayerPrefsX.GetColor ("SoundColor");
+			PlayerPrefsX.SetBool("IsVolume", false);
 			return;
 		} 
-		if(s==-1) {
-			print ("NO");
-			SoundButton.color = Color.green;
-			s =  1;
+		if(!PlayerPrefsX.GetBool("IsVolume")) {
+			print ("turnToTrue");
+			PlayerPrefsX.SetColor ("SoundColor", Color.green);
+			SoundButton.color=PlayerPrefsX.GetColor ("SoundColor");
+			PlayerPrefsX.SetBool("IsVolume", true);
 			return;
 		}
 
 	}
 
 	public void TurnVibration(){
-		if (v== 1) {
-			VibrationButton.color = Color.red;
-			IsVibration = false;
-			v = -1;
+
+		if (PlayerPrefsX.GetBool("IsVibration")) {
+			print("turnToFalse");
+			PlayerPrefsX.SetColor ("VibrationColor", Color.red);
+			VibrationButton.color=PlayerPrefsX.GetColor ("VibrationColor");
+			PlayerPrefsX.SetBool("IsVibration", false);
 			return;
 		} 
-		if(v==-1) {
-			VibrationButton.color = Color.green;
-			IsVibration = true;
-			v = 1;
+		if(!PlayerPrefsX.GetBool("IsVibration")) {
+			print ("turnToTrue");
+			PlayerPrefsX.SetColor ("VibrationColor", Color.green);
+			VibrationButton.color=PlayerPrefsX.GetColor ("VibrationColor");
+			PlayerPrefsX.SetBool("IsVibration", true);
 			return;
 		}
 
 	}
 
 	public void TurnDeveloper(){
-		if (d== 1) {
-			DeveloperButton.color = Color.red;
-			IsVibration = false;
-			d = -1;
+
+		if (PlayerPrefsX.GetBool("IsDeveloper")) {
+			print("turnToFalse");
+			PlayerPrefsX.SetColor ("DeveloperColor", Color.red);
+			DeveloperButton.color=PlayerPrefsX.GetColor ("DeveloperColor");
+			PlayerPrefsX.SetBool("IsDeveloper", false);
 			return;
 		} 
-		if(d==-1) {
-			DeveloperButton.color = Color.green;
-			IsVibration = true;
-			d = 1;
+		if(!PlayerPrefsX.GetBool("IsDeveloper")) {
+			print ("turnToTrue");
+			PlayerPrefsX.SetColor ("DeveloperColor", Color.green);
+			DeveloperButton.color=PlayerPrefsX.GetColor ("DeveloperColor");
+			PlayerPrefsX.SetBool("IsDeveloper", true);
 			return;
 		}
 
