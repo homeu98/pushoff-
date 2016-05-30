@@ -11,6 +11,8 @@ public class rockieScript : MonoBehaviour {
 
 	GameObject player;
 
+	public float speedOfUnderGroundRocks;
+
 	// Use this for initialization
 	void Start () {
 
@@ -23,8 +25,20 @@ public class rockieScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+
+		//OnDrawGizmosSelected ();
+
+		print (eType);
+
+
+		Vector3 relativePos = new Vector3(player.transform.position.x , this.transform.position.y , player.transform.position.z) ;
+
+		transform.LookAt (relativePos);
+
+
 	
 	}
+
 
 	public enum rockie{
 
@@ -88,7 +102,7 @@ public class rockieScript : MonoBehaviour {
 
 		yield return new WaitForSeconds (1);
 
-		Vector3 spawnPosition = new Vector3 (transform.position.x, transform.position.y, transform.position.z - 0.5f);
+		Vector3 spawnPosition = new Vector3 (transform.position.x, transform.position.y + 0.5f, transform.position.z - 1f);
 
 		Instantiate (bigRock, spawnPosition, transform.rotation);
 
@@ -103,9 +117,10 @@ public class rockieScript : MonoBehaviour {
 
 		for (int i = 0; i <= numberOfSmallRocks; i++) {
 
+
 			Vector3 spawnPosition = new Vector3 (transform.position.x, transform.position.y + 0.5f, transform.position.z);
 		
-			Instantiate (bigRock, spawnPosition, transform.rotation);
+			Instantiate (smallRocks, spawnPosition, transform.rotation);
 
 
 		}
@@ -120,13 +135,18 @@ public class rockieScript : MonoBehaviour {
 
 		//float distanceBetween = Vector3.Distance (transform.position, player.transform.position);
 
-		Vector3 midPoint = (transform.position - player.transform.position) * 0.5f;
+		Vector3 midPoint = (transform.position + player.transform.position) * 0.5f;
+		midPoint.y = 0f;
 
-		Vector3 firstPoint = midPoint * 0.5f;
+		Vector3 firstPoint = Vector3.Lerp (transform.position, player.transform.position , 0.25f);
+		firstPoint.y = 0f;
 
-		Vector3 lastPoint = (transform.position - player.transform.position) * 0.75f;
+		Vector3 secondPoint = Vector3.Lerp (transform.position, player.transform.position , 0.75f);
+		secondPoint.y = 0f;
 
 		Vector3 playerPosition = player.transform.position;
+		playerPosition.y = 0f;
+		//print (midPoint);
 
 		for (int i = 0; i <= 4; i++) {
 
@@ -144,7 +164,7 @@ public class rockieScript : MonoBehaviour {
 			} else if (i == 3) {
 
 
-				Instantiate (underGroundRocks, lastPoint, transform.rotation);
+				Instantiate (underGroundRocks, secondPoint, transform.rotation);
 
 
 			} else if (i == 4) {
@@ -155,7 +175,7 @@ public class rockieScript : MonoBehaviour {
 			}
 
 
-			yield return new WaitForSeconds (2);
+			yield return new WaitForSeconds (speedOfUnderGroundRocks);
 
 	
 		}
