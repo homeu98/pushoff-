@@ -85,6 +85,7 @@
      <Compile Include="Assets\Enemies\normalEnemies\graveYard\skeletonScript.cs" />
      <Compile Include="Assets\Enemies\normalEnemies\turtle\turtleScript.cs" />
      <Compile Include="Assets\MenuScript.cs" />
+     <Compile Include="Assets\Player\JumpEffect.cs" />
      <Compile Include="Assets\Player\NewBehaviourScript.cs" />
      <Compile Include="Assets\Player\StandalonePlayer.cs" />
      <Compile Include="Assets\Player\playerModelAnimationScript.cs" />

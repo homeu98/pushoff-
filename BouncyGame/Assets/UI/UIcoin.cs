@@ -18,8 +18,12 @@ public class UIcoin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-		text.text = gm.coin.ToString (); 
+		//-----
+		text.text = "" + (gm.totalMoney);
+		//-----
+
+
+		//text.text = gm.coin.ToString (); 
 
 	}
 
