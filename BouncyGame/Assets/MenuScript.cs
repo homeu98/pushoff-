@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class MenuScript : MonoBehaviour {
 
-	public GameObject Panel;
+	public GameObject eachButtonPanel;
+	public GameObject LosePage;
+	public Animator LosePageParam;
 	public GameObject Player;
+
+
 
 	bool Unparent = false;
 
@@ -21,8 +25,9 @@ public class MenuScript : MonoBehaviour {
 	void Update () {
 	
 	}
+
 	public void StartGame(){
-		Panel.SetActive (false);
+		eachButtonPanel.SetActive (false);
 
 		Rigidbody rb = Player.GetComponent<Rigidbody> ();
 		Player.transform.SetParent (null);
@@ -49,5 +54,12 @@ public class MenuScript : MonoBehaviour {
 	}
 	public void viewSetting(){
 		SceneManager.LoadScene ("settingSelectScene");
+	}
+
+	public void PopInLosePage(){
+		LosePage.SetActive (true);
+		if(LosePage.activeSelf){
+			LosePageParam.SetTrigger ("GameOver");
+		}
 	}
 }

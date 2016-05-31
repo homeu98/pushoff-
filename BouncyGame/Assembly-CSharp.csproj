@@ -90,6 +90,7 @@
      <Compile Include="Assets\Player\playerModelAnimationScript.cs" />
      <Compile Include="Assets\SceneSetting.cs" />
      <Compile Include="Assets\SettingSwitch.cs" />
+     <Compile Include="Assets\UI\UI Animation\AnimationEvent.cs" />
      <Compile Include="Assets\UI\UIcoin.cs" />
      <Compile Include="Assets\UI\UIenemiesKilled.cs" />
      <Compile Include="Assets\UI\characterSelectAnimScript.cs" />

@@ -95,7 +95,11 @@ public class StandalonePlayer : MonoBehaviour {
 	//This is the method to send when enemies hits the player, this is also the method to player player's death animation.
 
 	void die(){
-		
+
+		//-----
+		gm.gameObject.SendMessage("PopInLosePage",null,SendMessageOptions.DontRequireReceiver);
+		//-----
+
 		print ("deadalready");
 		Destroy (this.gameObject);
 

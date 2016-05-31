@@ -1,21 +1,26 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player\StandalonePlayer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\SettingSwitch.cs">
     <Files>
-      <File FileName="Assets\Enemies\normalEnemies\Boar\Boar.cs" Line="1" Column="1" />
       <File FileName="Assets\SceneSetting.cs" Line="1" Column="1" />
-      <File FileName="Assets\Player\StandalonePlayer.cs" Line="105" Column="20" />
       <File FileName="Assets\SettingSwitch.cs" Line="1" Column="1" />
       <File FileName="Assets\UI\characterSelectAnimScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\spawningScript.cs" Line="1" Column="1" />
       <File FileName="Assets\UI\playOrPurcahseScript.cs" Line="1" Column="1" />
       <File FileName="Assets\script\Looper.cs" Line="1" Column="1" />
       <File FileName="Assets\changingSystem.cs" Line="1" Column="1" />
       <File FileName="Assets\playerScript.cs" Line="1" Column="1" />
       <File FileName="Assets\Player\playerModelAnimationScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\MenuScript.cs" Line="1" Column="1" />
       <File FileName="Assets\camera\cameraMovingScript.cs" Line="1" Column="1" />
+      <File FileName="Assets\Player\StandalonePlayer.cs" Line="100" Column="90" />
+      <File FileName="Assets\MenuScript.cs" Line="59" Column="8" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
