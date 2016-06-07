@@ -1,18 +1,8 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player\JumpEffect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player\playerModelAnimationScript.cs">
     <Files>
-      <File FileName="Assets\Player\JumpEffect.cs" Line="9" Column="48" />
-      <File FileName="Assets\SceneSetting.cs" Line="1" Column="1" />
-      <File FileName="Assets\SettingSwitch.cs" Line="1" Column="1" />
-      <File FileName="Assets\UI\characterSelectAnimScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\UI\playOrPurcahseScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\Looper.cs" Line="1" Column="1" />
-      <File FileName="Assets\changingSystem.cs" Line="1" Column="1" />
-      <File FileName="Assets\playerScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\camera\cameraMovingScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Player\StandalonePlayer.cs" Line="1" Column="1" />
-      <File FileName="Assets\script\GameManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Player\playerModelAnimationScript.cs" Line="71" Column="10" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

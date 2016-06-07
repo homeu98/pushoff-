@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
 	int totalNumber;
 	GameObject mainCamera, player;
 	GameManager gm;
+	playerModelAnimationScript pa;
 
 	progressBar pb;
 
@@ -14,7 +15,12 @@ public class GameManager : MonoBehaviour {
 
 	public int nKills, nDeath, nHopped;
 
-	void Start(){
+	Mesh curSkin;
+	Material currentMaterial;
+
+	void Awake(){
+
+		DontDestroyOnLoad (this.transform.gameObject);
 
 		player = GameObject.FindWithTag ("Player");
 
@@ -268,5 +274,8 @@ public class GameManager : MonoBehaviour {
 
 
 	}
+
+
+
 
 }

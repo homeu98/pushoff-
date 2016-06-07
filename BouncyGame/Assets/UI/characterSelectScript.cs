@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class characterSelectScript : MonoBehaviour {
 
@@ -125,6 +127,12 @@ public class characterSelectScript : MonoBehaviour {
 			}
 
 		}
+	}
+
+	public void goBackButton(){
+
+		SceneManager.LoadScene ("standalone 1");
+
 	}
 
 }
