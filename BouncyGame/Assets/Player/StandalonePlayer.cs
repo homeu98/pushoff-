@@ -14,12 +14,17 @@ public class StandalonePlayer : MonoBehaviour {
 
 	public float jumpDistance, force, thrustForce;
 
+	public int currentSpirit;
+
 	float currentLerpTime, perc;
 	Vector3 startPos;
 	Vector3 endPos;
 	public float turnForce;
 
 	private Vector3 currentAngle;
+
+	public GameObject[] spiritObj;
+	public GameObject spiritSpawnPosition;
 
 	//cant jump when in air
 	bool OnSky=true;
@@ -52,7 +57,7 @@ public class StandalonePlayer : MonoBehaviour {
 
 		print ("pushing");
 
-		if (!c.transform.CompareTag("grid")) {
+		if (!c.transform.CompareTag("grid") && c.transform.tag == "enemy") {
 
 			Vector3 dir = c.contacts [0].point - transform.position;
 
@@ -159,6 +164,70 @@ public class StandalonePlayer : MonoBehaviour {
 
 		/*print ("onGround");
 		onGround = true;*/
+
+	}
+
+	void spirit(int whichSpirit){
+
+		switch(currentSpirit){
+
+		case 1:
+
+			//fire				
+			Instantiate(spiritObj[0], spiritSpawnPosition.transform.position, transform.rotation);
+
+			break;
+
+		case 2:
+
+			//water
+			Instantiate(spiritObj[1], spiritSpawnPosition.transform.position, transform.rotation);
+
+
+			break;
+
+		case 3:
+
+			//thunder
+			Instantiate(spiritObj[2], spiritSpawnPosition.transform.position, transform.rotation);
+
+
+			break;
+
+		case 4:
+
+			//earth
+			Instantiate(spiritObj[3], spiritSpawnPosition.transform.position, transform.rotation);
+
+
+			break;
+
+		case 5:
+
+			//dark
+			Instantiate(spiritObj[4], spiritSpawnPosition.transform.position, transform.rotation);
+
+
+			break;
+
+		case 6:
+
+			//light
+			Instantiate(spiritObj[5], spiritSpawnPosition.transform.position, transform.rotation);
+
+
+			break;
+
+
+		default:
+
+			break;
+
+
+
+
+		}
+
 
 	}
 
