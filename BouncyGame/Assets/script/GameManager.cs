@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour {
 
 	void Awake(){
 
-		DontDestroyOnLoad (this.transform.gameObject);
-
 		player = GameObject.FindWithTag ("Player");
 
 		pb = GameObject.FindWithTag ("progressBar").GetComponent<progressBar> ();
