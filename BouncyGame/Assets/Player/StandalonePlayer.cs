@@ -169,16 +169,16 @@ public class StandalonePlayer : MonoBehaviour {
 
 	void spirit(int whichSpirit){
 
-		switch(currentSpirit){
+		switch(whichSpirit){
 
-		case 1:
+		case 0:
 
 			//fire				
 			Instantiate(spiritObj[0], spiritSpawnPosition.transform.position, transform.rotation);
 
 			break;
 
-		case 2:
+		case 1:
 
 			//water
 			Instantiate(spiritObj[1], spiritSpawnPosition.transform.position, transform.rotation);
@@ -186,7 +186,7 @@ public class StandalonePlayer : MonoBehaviour {
 
 			break;
 
-		case 3:
+		case 2:
 
 			//thunder
 			Instantiate(spiritObj[2], spiritSpawnPosition.transform.position, transform.rotation);
@@ -194,7 +194,7 @@ public class StandalonePlayer : MonoBehaviour {
 
 			break;
 
-		case 4:
+		case 3:
 
 			//earth
 			Instantiate(spiritObj[3], spiritSpawnPosition.transform.position, transform.rotation);
@@ -202,7 +202,7 @@ public class StandalonePlayer : MonoBehaviour {
 
 			break;
 
-		case 5:
+		case 4:
 
 			//dark
 			Instantiate(spiritObj[4], spiritSpawnPosition.transform.position, transform.rotation);
@@ -210,7 +210,7 @@ public class StandalonePlayer : MonoBehaviour {
 
 			break;
 
-		case 6:
+		case 5:
 
 			//light
 			Instantiate(spiritObj[5], spiritSpawnPosition.transform.position, transform.rotation);
