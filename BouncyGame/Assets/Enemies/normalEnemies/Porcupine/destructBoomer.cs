@@ -7,6 +7,10 @@ public class destructBoomer : MonoBehaviour {
 	void Start () {
 		Destroy (gameObject, Timer);
 	}
-	
+	void OnTriggerEnter(Collider other){
+		if(other.CompareTag("Player")){
+			other.gameObject.SendMessage ("die", null, SendMessageOptions.DontRequireReceiver);
+		}
+	}
 
 }

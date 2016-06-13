@@ -51,12 +51,12 @@ public class BulletSystem : MonoBehaviour {
 				NextAttackTime += period;
 			}
 
-		/*	foreach(GameObject n in bulletList){
+			foreach(GameObject n in bulletList){
 			if(n != null)
 				n.transform.Translate (Vector3.forward * Time.deltaTime * speed);
 			
-			}*/
-				//temporaryBullet.transform.position = Vector3.MoveTowards (temporaryBullet.transform.position, new Vector3 (temporaryBullet.transform.position.x + i, temporaryBullet.transform.position.y, temporaryBullet.transform.position.z + j) * 50f, Time.deltaTime*5f);
+			}
+			//	temporaryBullet.transform.position = Vector3.MoveTowards (temporaryBullet.transform.position, new Vector3 (temporaryBullet.transform.position.x + i, temporaryBullet.transform.position.y, temporaryBullet.transform.position.z + j) * 50f, Time.deltaTime*5f);
 
 
 	}

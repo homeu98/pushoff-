@@ -8,8 +8,11 @@ public class Porcupine : MonoBehaviour {
 
 	GameManager gm;
 
+	BulletSystem bulletSystem;
 	// Use this for initialization
 	void Start () {
+		bulletSystem = GetComponent<BulletSystem> ();
+
 		escapeDirection = Random.insideUnitCircle * 2f - (Vector2)transform.position;
 
 		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
@@ -19,7 +22,7 @@ public class Porcupine : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (BulletSystem.instance.AttackTimes <= 0) {
+		if (bulletSystem.AttackTimes <= 0) {
 			transform.Translate (new Vector3 (escapeDirection.x,0f,escapeDirection.y) * Time.deltaTime * runAwaySpeed);
 		} else {
 			Vector2 Extent = Random.insideUnitCircle * 2f;
