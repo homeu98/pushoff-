@@ -9,6 +9,8 @@ public class playOrPurcahseScript : MonoBehaviour {
 	int currentNumber;
 	int currentChoosenCharacter;
 	Button btt;
+	public Text text;
+	string currentSkinName;
 
 	// Use this for initialization
 	void Start () {
@@ -21,54 +23,51 @@ public class playOrPurcahseScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		currentNumber = control.minButtonNum;
 
 
 	}
 
-	void characterSelecting(int whichCharacter){
 
-		//inside, will be using playerprefs to save down what character the player have choosen
+	public void pressed(){
 
-		switch (whichCharacter) 
-		{
+		//if purchase was done, it will set the skin.
 
-		case 1:
-			
-			break;
+		if (true) {
 
-		case 2:
+			//purchasing on google play or app store
 
-			break;
+			//done!
 
-		case 3:
+			PlayerPrefs.SetInt ("skinNumber", currentNumber);
+			PlayerPrefsX.SetBool (currentSkinName, true);
 
-			break;
-
-		case 4:
-
-			break;
-
-		case 5:
-
-			break;
+		} else {
 
 
-		default:
-		
-			break;
+			//either they exit the purchase or did not have enough money or whatever
 
-
-
+			//do nothing.
 
 		}
 
 
+
 	}
 
-	public void pressed(){
+	void check(string name){
 
-		characterSelecting (currentNumber);
+		currentSkinName = name;
+
+		text.text = "$0.99";
+
+	}
+
+
+	void thisSkin(int whichSkinNUmber){
+
+		currentNumber = whichSkinNUmber;
+
+		text.text = "PLAY";
 
 	}
 

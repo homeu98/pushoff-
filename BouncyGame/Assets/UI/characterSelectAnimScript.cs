@@ -6,18 +6,18 @@ public class characterSelectAnimScript : MonoBehaviour {
 	Animator anim;
 	characterSelectScript control;
 	int currentNumber;
-	GameManager gm;
-	Mesh skin;
-	Material skinTexture;
+	characterUnlockingScript characterUnl;
+	GameObject playOrPur;
+
 
 	// Use this for initialization
 	void Start () {
 
-		gm = GameObject.FindWithTag ("GM").GetComponent<GameManager> ();
 		anim = GetComponent<Animator> ();
 		control = GameObject.FindWithTag ("controlScript").GetComponent<characterSelectScript> (); 
-		skin = GetComponent<MeshFilter>().sharedMesh;
-		skinTexture = GetComponent<Renderer> ().material;
+
+		characterUnl = GameObject.FindWithTag ("controlScript").GetComponent<characterUnlockingScript> (); 
+		playOrPur = GameObject.FindWithTag ("playOrPur");
 	}
 	
 	// Update is called once per frame
@@ -43,12 +43,20 @@ public class characterSelectAnimScript : MonoBehaviour {
 
 	void sendSkin(){
 
-		PlayerPrefs.SetInt ("skinNumber", currentNumber);
+		if (!characterUnl.checkIfSkinUnlocked (this.transform.name)) {
 
-		print (currentNumber);
-		print ("skin");
+			playOrPur.SendMessage ("check", this.transform.name, SendMessageOptions.DontRequireReceiver);
 
+		} else {
+
+			playOrPur.SendMessage ("thisSkin", currentNumber, SendMessageOptions.DontRequireReceiver);
+
+
+		}
+			
 	}
+
+
 
 
 }
