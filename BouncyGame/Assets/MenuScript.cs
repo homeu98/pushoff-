@@ -7,10 +7,10 @@ public class MenuScript : MonoBehaviour {
 
 	public GameObject eachButtonPanel;
 	public GameObject LosePage;
-	public Animator LosePageParam;
+	public Animator replayPanelParamter;
 	public GameObject Player;
 
-
+	RewardSystem rewardsystem;
 
 	bool Unparent = false;
 
@@ -18,7 +18,7 @@ public class MenuScript : MonoBehaviour {
 
 
 	void Start () {
-		
+		rewardsystem = GameObject.FindGameObjectWithTag ("canvas").GetComponent<RewardSystem> ();
 	}
 	
 	// Update is called once per frame
@@ -59,7 +59,9 @@ public class MenuScript : MonoBehaviour {
 	public void PopInLosePage(){
 		LosePage.SetActive (true);
 		if(LosePage.activeSelf){
-			LosePageParam.SetTrigger ("GameOver");
+			rewardsystem.PlayTimesReward ();
+			replayPanelParamter.SetTrigger ("GameOver");
 		}
+
 	}
 }

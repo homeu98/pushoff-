@@ -10,8 +10,12 @@ public class AnimationEvent : MonoBehaviour {
 	int coinsWhenLose = 0;
 	int killsWhenLose = 0;
 	GameManager gm;
+
+
 	// Use this for initialization
 	void Start () {
+		
+
 		gm = GameObject.FindGameObjectWithTag ("GM").GetComponent<GameManager>();
 	}
 	
@@ -32,6 +36,7 @@ public class AnimationEvent : MonoBehaviour {
 				CoinValueText.text = ""+coinsWhenLose ;
 			}
 		}
+
 
 	}
 }
