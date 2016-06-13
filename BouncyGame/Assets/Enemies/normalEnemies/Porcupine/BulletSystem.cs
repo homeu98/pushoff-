@@ -15,7 +15,7 @@ public class BulletSystem : MonoBehaviour {
 	float NextAttackTime; 
 	GameObject temporaryBullet;
 	GameObject[,] bulletArray;
-	public static List<GameObject> bulletList;
+	List<GameObject> bulletList;
 
 	public static BulletSystem instance;
 	// Use this for initialization

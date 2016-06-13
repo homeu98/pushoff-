@@ -48,6 +48,7 @@
      <Compile Include="Assets\Enemies\aiJumpingScript.cs" />
      <Compile Include="Assets\Enemies\boss\Heavy\HeavyHSscript.cs" />
      <Compile Include="Assets\Enemies\boss\Heavy\bombScript.cs" />
+     <Compile Include="Assets\Enemies\boss\camera\cameraMovingScript.cs" />
      <Compile Include="Assets\Enemies\boss\crazyDog\barkingBullet.cs" />
      <Compile Include="Assets\Enemies\boss\crazyDog\chain.cs" />
      <Compile Include="Assets\Enemies\boss\crazyDog\crazyDogBoss.cs" />
@@ -103,7 +104,6 @@
      <Compile Include="Assets\UI\controlScript\controlScript.cs" />
      <Compile Include="Assets\UI\playOrPurcahseScript.cs" />
      <Compile Include="Assets\UI\progressBar.cs" />
-     <Compile Include="Assets\camera\cameraMovingScript.cs" />
      <Compile Include="Assets\changingSystem.cs" />
      <Compile Include="Assets\environment\Destroyer.cs" />
      <Compile Include="Assets\items\Coin\coin.cs" />
