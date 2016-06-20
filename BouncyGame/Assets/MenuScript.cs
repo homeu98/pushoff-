@@ -60,6 +60,8 @@ public class MenuScript : MonoBehaviour {
 		LosePage.SetActive (true);
 		if(LosePage.activeSelf){
 			rewardsystem.PlayTimesReward ();
+			rewardsystem.TemporarySkinsOrItemsReward ();
+			rewardsystem.AskToLottery ();
 			replayPanelParamter.SetTrigger ("GameOver");
 		}
 

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scene/standalone 1.unity
+- path: Assets/scene/LotteryScene.unity
   isLoaded: 1
   isActive: 1
