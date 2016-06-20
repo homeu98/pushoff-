@@ -34,12 +34,9 @@ public class playOrPurcahseScript : MonoBehaviour {
 
 		if (true) {
 
-			//purchasing on google play or app store
+			//purchasing using in game currency
 
-			//done!
-
-			PlayerPrefs.SetInt ("skinNumber", currentNumber);
-			PlayerPrefsX.SetBool (currentSkinName, true);
+		
 
 		} else {
 
