@@ -23,6 +23,7 @@ public class spawningScript : MonoBehaviour {
 	int enemiesNumber= 10;
 	int enemiesType;
 
+	public int currentCounter = 0;
 
 	int spawningNumber;
 
@@ -32,231 +33,210 @@ public class spawningScript : MonoBehaviour {
 
 	bool miniBossHere;
 
+	bool spawn;
 
-	Slider progressBar;
+
+	public enum spawningStatus{
+
+		normalEnemies,
+		boss,
+		notSpawning
+
+	}
+
 
 	// Use this for initialization
 	void Start () {
 		//InvokeRepeating ("whatToSpawn", 1f, 3f);
 		mainCamera = GameObject.FindWithTag ("MainCamera");
 		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
-		progressBar = GameObject.FindWithTag ("progressBar").GetComponent<Slider> ();
 
-		chooseType (eType);
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-		if (GameObject.FindWithTag ("miniBoss")) {
-
-			miniBossHere = true;
-		} else {
-
-			miniBossHere = false;
-		}
-
-		print (eType);
-
-
-	
-	}
-
-	public enum spawningStatus{
-
-		normalEnemies,
-		miniBoss,
-		boss,
-		notSpawning
+		chooseType (currentCounter);
 
 	}
+
 
 	IEnumerator pauseSpawning(){
 
 		yield return new WaitForSeconds (pauseSpawningTime);
 
 	}
-		
 
-	void progressBarCurrent(int whatToSpawn){
+	
+	// Update is called once per frame
+	void Update () {
 
-		if (whatToSpawn == 1) {
 
-			eType = spawningStatus.normalEnemies;
-		} else if (whatToSpawn == 2) {
+		if (eType == spawningStatus.notSpawning) {
 
-			eType = spawningStatus.miniBoss;
-		} else if (whatToSpawn == 3) {
-
-			eType = spawningStatus.boss;
 
 		}
+	
+	}
+
+
+	void chooseType(int currentCounter){
+
+		if (currentCounter >= 100) {
+
+			eType = spawningStatus.boss;
+			spawn = false;
+
+			//here, we send message to the camera to pause it at the arena
+			//as well as stopping the spawning
+
+		} else if (currentCounter < 100) {
+
+			eType = spawningStatus.normalEnemies;
+
+			spawn = true;
+		}
+			
+
+		StartCoroutine ("whatToSpawn", spawn);
+
 
 	}
 
 
-	void chooseType(spawningStatus whatStatus){
+
+	IEnumerator whatToSpawn(bool spawn){
 
 
-			StartCoroutine ("pauseSpawning");
 
-		switch (whatStatus) {
+		switch (eType) {
 
 		case spawningStatus.normalEnemies:
-			StartCoroutine ("whatToSpawn");
-			break;
 
-		case spawningStatus.miniBoss:
-			StartCoroutine ("whatToSpawn");
+			enemiesType = Random.Range (0, 11);
+			spawningNumber = Random.Range (0, SpawningPosition.Length - 1);
+
 			break;
 
 		case spawningStatus.boss:
-			StartCoroutine ("whatToSpawn");
-			break;
-
-		case spawningStatus.notSpawning:
-
-			break;
-
-		}
-
-	}
-
-	IEnumerator whatToSpawn(){
-
-
-		//doNotSpawnTheSameThing ();
-
-		if (eType == spawningStatus.boss) {
 
 			enemiesType = 12;
-			pauseSpawningTime = 100f;
-
-		} else if (eType == spawningStatus.miniBoss) {
-
-			enemiesType = 11;
-			pauseSpawningTime = 10f;
 
 
-		} else if(eType == spawningStatus.normalEnemies) {
-			
-			enemiesType = Random.Range (0, enemiesNumber);
-
-			spawningNumber = Random.Range (0, SpawningPosition.Length - 1);
-
-			pauseSpawningTime = 3f;
+			break;
 
 		}
-
-		yield return new WaitForSeconds (pauseSpawningTime);
-
-
-		switch (enemiesType) {
-
-		case 1:
+			
+		if (spawn) {
+			yield return new WaitForSeconds (pauseSpawningTime);
 
 
-			int teamNumberChicken = Random.Range (0, chickenList.Length);
+			switch (enemiesType) {
+
+			case 1:
+
+
+				int teamNumberChicken = Random.Range (0, chickenList.Length);
 
 
 			//print ("spawnChicken");
-			spawningChicken (teamNumberChicken);
-			break;
+				spawningChicken (teamNumberChicken);
+				break;
 
-		case 2:
+			case 2:
 
-			int teamNumberBear = Random.Range (0, bear.Length);
+				int teamNumberBear = Random.Range (0, bear.Length);
 
 
 			//print ("spawningBear");
-			spawningBear (teamNumberBear);
-			break;
+				spawningBear (teamNumberBear);
+				break;
 		
-		case 3:
+			case 3:
 
-			int teamNumberBigFoot = Random.Range (0, bigFoot.Length);
+				int teamNumberBigFoot = Random.Range (0, bigFoot.Length);
 
 			//print ("spawningBigFoot");
-			spawningBigFoot (teamNumberBigFoot);
-			break;
+				spawningBigFoot (teamNumberBigFoot);
+				break;
 
-		case 4:
+			case 4:
 
-			int teamNumberBoar = Random.Range (0, boar.Length);
+				int teamNumberBoar = Random.Range (0, boar.Length);
 
 			//print ("spawningBoar");
-			spawningBoar (teamNumberBoar);
-			break;
+				spawningBoar (teamNumberBoar);
+				break;
 		
-		case 5:
+			case 5:
 
-			int teamNumberBird = Random.Range (0, bird.Length);
+				int teamNumberBird = Random.Range (0, bird.Length);
 
 
 			//print ("spawningBird");
-			spawningBird (teamNumberBird);
-			break;
+				spawningBird (teamNumberBird);
+				break;
 
 
-		case 6:
-			int teamFireFox = Random.Range (0, fireFox.Length);
+			case 6:
+				int teamFireFox = Random.Range (0, fireFox.Length);
 
 			//print ("spawningFireFox");
-			spawningfireFox (teamFireFox);
-			break;
+				spawningfireFox (teamFireFox);
+				break;
 		
-		case 7:
+			case 7:
 
-			int teamGrassHopper = Random.Range (0, grassHopper.Length);
+				int teamGrassHopper = Random.Range (0, grassHopper.Length);
 
 			//print ("spawningGrassHopper");
-			spawninGrassHopper (teamGrassHopper);
-			break;
+				spawninGrassHopper (teamGrassHopper);
+				break;
 
-		case 8:
+			case 8:
 			
-			int teamPorcupine = Random.Range (0, porcupine.Length);
+				int teamPorcupine = Random.Range (0, porcupine.Length);
 
 			//print ("porcupine");
-			spawningPorcupine (teamPorcupine);
-			break;
+				spawningPorcupine (teamPorcupine);
+				break;
 
 	
-		case 9:
+			case 9:
 
-			int graveYardList = Random.Range (0, graveYard.Length);
-			spawningGraveYard (graveYardList);
-			break;
+				int graveYardList = Random.Range (0, graveYard.Length);
+				spawningGraveYard (graveYardList);
+				break;
 		
-		case 10:
+			case 10:
 
-			int turtle = Random.Range (0, turtleList.Length);
-			spawningTutrle (turtle);
-			break;
+				int turtle = Random.Range (0, turtleList.Length);
+				spawningTutrle (turtle);
+				break;
 	
-		case 11:
+			case 11:
 
-			int miniBoss = Random.Range (0, miniBossList.Length);
-			spawningMiniBosses (miniBoss);
+				int miniBoss = Random.Range (0, miniBossList.Length);
+				spawningMiniBosses (miniBoss);
 
-			break;
+				break;
 
-		case 12:
+			case 12:
 
-			int boss = Random.Range (0, bossList.Length);
-			spawningMiniBosses (boss);
-			break;
+				int boss = Random.Range (0, bossList.Length);
+				spawningMiniBosses (boss);
+
+
+
+				break;
 
 		
-		default:
+			default:
 
-			break;
+				break;
 
-		}
+			}
 
-	
-		chooseType (eType);
+			currentCounter = currentCounter + 2;
+
+			chooseType (currentCounter);
+
+		} 
 	}
 
 	void spawningMiniBosses(int whichBoss ){

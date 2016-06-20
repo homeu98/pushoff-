@@ -29,7 +29,7 @@ public class StandalonePlayer : MonoBehaviour {
 	//cant jump when in air
 	bool OnSky=true;
 
-	void Start () {
+	void FixedUpdate () {
 		rb = GetComponent<Rigidbody> ();
 		gm = GameObject.FindWithTag ("GM").GetComponent<GameManager> ();
 		//currentAngle = transform.localEulerAngles;
@@ -55,15 +55,16 @@ public class StandalonePlayer : MonoBehaviour {
 		}
 		//----
 
-		print ("pushing");
 
-		if (!c.transform.CompareTag("grid") && c.transform.tag == "enemy") {
+		if (!c.transform.CompareTag("grid")) {
+
+			print ("pushing");
 
 			Vector3 dir = c.contacts [0].point - transform.position;
 
 			dir = dir.normalized;
 
-			c.rigidbody.AddForce (dir * force);
+			c.gameObject.GetComponent<Rigidbody> ().AddForce (dir * force); 
 			c.gameObject.SendMessage ("dead", true, SendMessageOptions.DontRequireReceiver);
 
 		}

@@ -38,10 +38,10 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>D:/Unity3D/Editor/Data/Managed/UnityEngine.dll</HintPath>
+      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>D:/Unity3D/Editor/Data/Managed/UnityEditor.dll</HintPath>
+      <HintPath>D:/Program Files/Unity/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -98,11 +98,16 @@
      <Compile Include="Assets\UI\UI Animation\AnimationEvent.cs" />
      <Compile Include="Assets\UI\UIcoin.cs" />
      <Compile Include="Assets\UI\UIenemiesKilled.cs" />
-     <Compile Include="Assets\UI\characterSelectAnimScript.cs" />
-     <Compile Include="Assets\UI\characterSelectScript.cs" />
-     <Compile Include="Assets\UI\characterSelectedScript.cs" />
+     <Compile Include="Assets\UI\characterSelectPage\characterSelectAnimScript.cs" />
+     <Compile Include="Assets\UI\characterSelectPage\characterSelectScript.cs" />
+     <Compile Include="Assets\UI\characterSelectPage\characterSelectedScript.cs" />
+     <Compile Include="Assets\UI\characterSelectPage\characterUnlockingScript.cs" />
+     <Compile Include="Assets\UI\characterSelectPage\playOrPurcahseScript.cs" />
      <Compile Include="Assets\UI\controlScript\controlScript.cs" />
-     <Compile Include="Assets\UI\playOrPurcahseScript.cs" />
+     <Compile Include="Assets\UI\itemSelectPage\checkIfItemPurchased.cs" />
+     <Compile Include="Assets\UI\itemSelectPage\itemAnimScript.cs" />
+     <Compile Include="Assets\UI\itemSelectPage\itemControl.cs" />
+     <Compile Include="Assets\UI\itemSelectPage\itemWatchVid.cs" />
      <Compile Include="Assets\UI\progressBar.cs" />
      <Compile Include="Assets\camera\cameraMovingScript.cs" />
      <Compile Include="Assets\changingSystem.cs" />
@@ -134,14 +139,13 @@
      <Compile Include="Assets\script\MultidimensionalArray.cs" />
      <Compile Include="Assets\script\PoolManager.cs" />
      <Compile Include="Assets\script\VirtualJoystick.cs" />
-     <Compile Include="Assets\script\characterUnlockingScript.cs" />
      <Compile Include="Assets\script\playerPerfs.cs" />
      <Compile Include="Assets\script\spawningScript.cs" />
  <Reference Include="UnityEngine.UI">
- <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Networking">
- <HintPath>D:/Unity3D/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour {
 		miniBossIsHere ();
 		print ("number of enemies" + numberOfEnemiesSpawned);
 
-		print (totalMoney);
 	}
 
 	void miniBossIsHere(){
