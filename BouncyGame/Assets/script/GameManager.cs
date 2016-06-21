@@ -72,13 +72,6 @@ public class GameManager : MonoBehaviour {
 
 
 
-		if (tag == "enemy") {
-
-			numberOfEnemiesSpawned += 1;
-
-			pb.SendMessage ("add", null, SendMessageOptions.DontRequireReceiver);
-
-		}
 
 
 	}

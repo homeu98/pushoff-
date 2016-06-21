@@ -18,6 +18,8 @@ public class spawningScript : MonoBehaviour {
 
 	public GameObject[] bossList;
 
+	public GameObject progressBar;
+
 	GameObject mainCamera;
 
 	int enemiesNumber= 10;
@@ -115,7 +117,13 @@ public class spawningScript : MonoBehaviour {
 
 		case spawningStatus.boss:
 
-			enemiesType = 12;
+			//spawn the boss, when it move to the right position
+			yield return new WaitForSeconds (10);
+
+			int boss = Random.Range (0, bossList.Length);
+
+			spawningBoss (boss);
+
 
 
 			break;
@@ -216,15 +224,7 @@ public class spawningScript : MonoBehaviour {
 
 				break;
 
-			case 12:
-
-				int boss = Random.Range (0, bossList.Length);
-				spawningMiniBosses (boss);
-
-
-
-				break;
-
+		
 		
 			default:
 
@@ -234,7 +234,11 @@ public class spawningScript : MonoBehaviour {
 
 			currentCounter = currentCounter + 2;
 
+			progressBar.SendMessage ("add", currentCounter, SendMessageOptions.DontRequireReceiver);
+
 			chooseType (currentCounter);
+
+
 
 		} 
 	}

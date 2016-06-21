@@ -2,16 +2,14 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Player\StandalonePlayer.cs">
     <Files>
-      <File FileName="Assets\script\spawningScript.cs" Line="26" Column="27" />
-      <File FileName="Assets\RewardSystem.cs" Line="39" Column="3" />
-      <File FileName="Assets\MenuScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\items\GameItems\spirit\spiritDeathScript.cs" Line="1" Column="1" />
-      <File FileName="Assets\Enemies\boss\crazyDog\crazyDogBoss.cs" Line="1" Column="1" />
-      <File FileName="Assets\CrackRandomBox.cs" Line="12" Column="1" />
-      <File FileName="Assets\UI\progressBar.cs" Line="22" Column="39" />
-      <File FileName="Assets\Player\StandalonePlayer.cs" Line="46" Column="30" />
+      <File FileName="Assets\script\spawningScript.cs" Line="108" Column="3" />
+      <File FileName="Assets\Player\StandalonePlayer.cs" Line="59" Column="39" />
       <File FileName="Assets\Enemies\deadScript.cs" Line="46" Column="1" />
-      <File FileName="Assets\script\GameManager.cs" Line="39" Column="1" />
+      <File FileName="Assets\script\GameManager.cs" Line="54" Column="2" />
+      <File FileName="Assets\UI\progressBar.cs" Line="43" Column="45" />
+      <File FileName="Assets\Enemies\boss\fatGuy\fatGuyScript.cs" Line="25" Column="2" />
+      <File FileName="Assets\Enemies\normalEnemies\crazyChicken\crazyChickenScript.cs" Line="57" Column="1" />
+      <File FileName="Assets\camera\cameraMovingScript.cs" Line="32" Column="33" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

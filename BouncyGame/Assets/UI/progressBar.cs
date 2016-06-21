@@ -19,9 +19,32 @@ public class progressBar : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		slider.value = spawn.currentCounter;
 
 	}
+
+	void add(int currentProgress){
+
+		slider.value = currentProgress;
+
+		if (currentProgress >= 100) {
+
+			//spawning Boss
+
+
+
+		}
+
+
+	}
+
+	void switchToHealthBar(){
+
+		//in here, we set the progres bar to the current boss health, 
+		// switching its apperance, and the value.
+
+	}
+
+
 
 
 }

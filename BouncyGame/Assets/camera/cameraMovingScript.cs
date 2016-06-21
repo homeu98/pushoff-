@@ -28,6 +28,14 @@ public class cameraMovingScript : MonoBehaviour {
 
 			speed = 0.005f;
 		}
+
+		if (GameObject.FindWithTag ("Boss")) {
+
+			speed = 0f;
+		} else {
+
+			speed = 0.005f;
+		}
 			
 	}
 		

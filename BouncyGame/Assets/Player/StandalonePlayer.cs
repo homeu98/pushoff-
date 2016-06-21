@@ -56,11 +56,11 @@ public class StandalonePlayer : MonoBehaviour {
 		//----
 
 
-		if (!c.transform.CompareTag("grid")) {
+		if (!c.transform.CompareTag("grid") ) {
 
 			print ("pushing");
 
-			Vector3 dir = c.contacts [0].point - transform.position;
+			Vector3 dir = c.contacts [1].point - transform.position;
 
 			dir = dir.normalized;
 
