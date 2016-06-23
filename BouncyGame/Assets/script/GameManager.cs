@@ -265,6 +265,23 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	void normalCounter(int currentCounter){
+
+		player.SendMessage ("pushForce", 500, SendMessageOptions.DontRequireReceiver);
+
+		pb.SendMessage ("add", currentCounter, SendMessageOptions.DontRequireReceiver);
+
+	}
+
+	void bossHealth(int bossHP){
+
+		player.SendMessage ("pushForce", 100, SendMessageOptions.DontRequireReceiver);
+
+		print (bossHP);
+		pb.SendMessage ("bossHealth", bossHP, SendMessageOptions.DontRequireReceiver);
+
+	}
+
 
 
 

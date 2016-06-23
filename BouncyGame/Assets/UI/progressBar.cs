@@ -7,6 +7,7 @@ public class progressBar : MonoBehaviour {
 	Slider slider;
 	GameManager gm;
 	spawningScript spawn;
+	int number;
 
 	// Use this for initialization
 	void Start () {
@@ -22,20 +23,7 @@ public class progressBar : MonoBehaviour {
 
 	}
 
-	void add(int currentProgress){
 
-		slider.value = currentProgress;
-
-		if (currentProgress >= 100) {
-
-			//spawning Boss
-
-
-
-		}
-
-
-	}
 
 	void switchToHealthBar(){
 
@@ -44,7 +32,17 @@ public class progressBar : MonoBehaviour {
 
 	}
 
+	void add(int currentProgressBar){
 
+		slider.value = currentProgressBar;
+
+	}
+
+	void bossHealth(int health){
+
+		slider.value = health;
+
+	}
 
 
 }

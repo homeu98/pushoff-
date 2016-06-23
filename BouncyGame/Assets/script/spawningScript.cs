@@ -18,7 +18,6 @@ public class spawningScript : MonoBehaviour {
 
 	public GameObject[] bossList;
 
-	public GameObject progressBar;
 
 	GameObject mainCamera;
 
@@ -53,16 +52,12 @@ public class spawningScript : MonoBehaviour {
 		mainCamera = GameObject.FindWithTag ("MainCamera");
 		gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameManager>();
 
+
 		chooseType (currentCounter);
 
 	}
 
 
-	IEnumerator pauseSpawning(){
-
-		yield return new WaitForSeconds (pauseSpawningTime);
-
-	}
 
 	
 	// Update is called once per frame
@@ -234,7 +229,8 @@ public class spawningScript : MonoBehaviour {
 
 			currentCounter = currentCounter + 2;
 
-			progressBar.SendMessage ("add", currentCounter, SendMessageOptions.DontRequireReceiver);
+
+			gm.SendMessage ("normalCounter", currentCounter, SendMessageOptions.DontRequireReceiver);
 
 			chooseType (currentCounter);
 

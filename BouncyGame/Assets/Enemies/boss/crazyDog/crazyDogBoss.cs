@@ -23,8 +23,8 @@ public class crazyDogBoss : MonoBehaviour {
 
 	bool getBack = false;
 
-	int chainCounter;
-
+	int chainCounter = 3;
+	GameObject gm;		
 
 	private crazyDogType eType = crazyDogType.Idle;
 
@@ -53,6 +53,11 @@ public class crazyDogBoss : MonoBehaviour {
 
 		startingPosition = this.transform.position;
 		chooseType (eType);
+
+
+		gm = GameObject.FindWithTag ("GM");
+
+		gm.SendMessage ("bossHealth", chainCounter, SendMessageOptions.DontRequireReceiver);
 	
 	}
 
@@ -62,11 +67,6 @@ public class crazyDogBoss : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		if (chainCounter == 3) {
-
-			Destroy (this.gameObject);
-
-		}
 
 		if (player.gameObject != null) {
 
@@ -316,11 +316,21 @@ public class crazyDogBoss : MonoBehaviour {
 
 	}
 
-	void chainDie(){
+	void chainDie(bool hit){
 
-		chainCounter++;
+		chainCounter--;
 
-		//StartCoroutine ("movePause");
+		if (chainCounter <= 0) {
+
+			Destroy (this.gameObject);
+
+		}
+
+		StartCoroutine ("movePause");
+
+
+
+		//
 
 	}
 

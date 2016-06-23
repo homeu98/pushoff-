@@ -24,15 +24,24 @@ public class rocketGuyScript : MonoBehaviour {
 
 	bool onSky = false;
 
+	public int health = 4;
+	GameObject gm;
 
 	// Use this for initialization
 	void Start () {
-		
+
+
+		gm = GameObject.FindWithTag ("GM");
+
+		gm.SendMessage ("bossHealth", health, SendMessageOptions.DontRequireReceiver);
+
 		player = GameObject.FindWithTag ("Player");
 
 		rigi = GetComponent<Rigidbody> ();
 
 		StartCoroutine ("movePause");
+
+
 	}
 	
 	// Update is called once per frame
@@ -233,6 +242,20 @@ public class rocketGuyScript : MonoBehaviour {
 
 	}
 
+	void dead(bool hit){
+
+
+		health--;
+
+		if (health <= 0) {
+
+			Destroy (this.gameObject);
+
+		}
+
+		StartCoroutine ("movePause");
+
+	}
 
 
 }

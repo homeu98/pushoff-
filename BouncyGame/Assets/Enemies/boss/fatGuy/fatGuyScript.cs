@@ -21,7 +21,9 @@ public class fatGuyScript : MonoBehaviour {
 
 	Camera camera;
 
-	int health = 3;
+	public int health = 4;
+
+	GameObject gm;						
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +36,9 @@ public class fatGuyScript : MonoBehaviour {
 
 		spinAttackRange.enabled = false;
 
+		gm = GameObject.FindWithTag ("GM");
 
+		gm.SendMessage ("bossHealth", health, SendMessageOptions.DontRequireReceiver);
 
 	}
 	

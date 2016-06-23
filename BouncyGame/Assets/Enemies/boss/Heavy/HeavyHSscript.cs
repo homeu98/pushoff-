@@ -16,6 +16,9 @@ public class HeavyHSscript : MonoBehaviour {
 	Vector3 startingPosition;
 	public float goBackSpeed;
 
+	GameObject gm;		
+	public int health = 4;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -42,6 +45,13 @@ public class HeavyHSscript : MonoBehaviour {
 		}
 	
 		print (eType);
+
+
+
+		gm = GameObject.FindWithTag ("GM");
+
+		gm.SendMessage ("bossHealth", health, SendMessageOptions.DontRequireReceiver);
+
 	}
 
 
@@ -192,4 +202,19 @@ public class HeavyHSscript : MonoBehaviour {
 
 	}
 
+
+	void dead(bool hit){
+
+
+		health--;
+
+		if (health <= 0) {
+
+			Destroy (this.gameObject);
+
+		}
+
+		StartCoroutine ("movePause");
+
+	}
 }

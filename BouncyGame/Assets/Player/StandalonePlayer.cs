@@ -39,6 +39,8 @@ public class StandalonePlayer : MonoBehaviour {
 	void Update () {
 		onGroundNow ();
 		print (onGround);
+
+	
 	}
 		
 
@@ -232,4 +234,10 @@ public class StandalonePlayer : MonoBehaviour {
 
 	}
 
+	void pushForce(int power){
+
+		force = power;
+
+
+	}
 }

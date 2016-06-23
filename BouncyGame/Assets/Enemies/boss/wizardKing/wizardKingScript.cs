@@ -6,7 +6,7 @@ public class wizardKingScript : MonoBehaviour {
 	private attackType eType = attackType.Idle;
 
 	GameObject player;
-
+	GameObject gm;
 	public float movePauseTimer, thunderCloudLastTime;
 
 	public int numberOfSkeleton, numberOfMagicBall;
@@ -19,6 +19,7 @@ public class wizardKingScript : MonoBehaviour {
 
 	public SphereCollider sheild;
 
+
 	// Use this for initialization
 	void Start () {
 	
@@ -27,7 +28,9 @@ public class wizardKingScript : MonoBehaviour {
 		player = GameObject.FindWithTag ("Player");
 
 		StartCoroutine ("movePause");
+		gm = GameObject.FindWithTag ("GM");
 
+		gm.SendMessage ("bossHealth", health, SendMessageOptions.DontRequireReceiver);
 	}
 	
 	// Update is called once per frame

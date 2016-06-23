@@ -183,7 +183,11 @@ public class rockieScript : MonoBehaviour {
 		StartCoroutine ("movePause");
 	}
 
+	void die(bool hit){
 
+
+
+	}
 
 
 
