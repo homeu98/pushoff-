@@ -55,6 +55,10 @@ public class MenuScript : MonoBehaviour {
 	public void viewSetting(){
 		SceneManager.LoadScene ("settingSelectScene");
 	}
+	public void viewLottery(){
+		SceneManager.LoadScene ("LotteryScene");
+	}
+
 
 	public void PopInLosePage(){
 		LosePage.SetActive (true);
