@@ -63,8 +63,9 @@ public class StandalonePlayer : MonoBehaviour {
 			Vector3 dir = c.contacts [1].point - transform.position;
 
 			dir = dir.normalized;
-
-			c.gameObject.GetComponent<Rigidbody> ().AddForce (dir * force); 
+			if(c.gameObject.GetComponent<Rigidbody>() != null){
+				c.gameObject.GetComponent<Rigidbody> ().AddForce (dir * force); 
+			}
 			c.gameObject.SendMessage ("dead", true, SendMessageOptions.DontRequireReceiver);
 
 		}

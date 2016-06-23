@@ -10,10 +10,13 @@ public class CrackRandomBox : MonoBehaviour {
 	public Text totalMoneyText;
 	public Text PrizeText;
 
+	public GameObject RandomBox;
+
 	int InititalTotalMoney;
 
 
 	public int TestingForTotalMoney = 1000;
+
 	void Awake(){
 		PlayerPrefs.SetInt ("totalMoney", TestingForTotalMoney);
 	}
@@ -23,20 +26,22 @@ public class CrackRandomBox : MonoBehaviour {
 		totalMoneyText.text = "" + InititalTotalMoney;
 		PrizeText.text = "" + prizeForOneTime;
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
+	void Update(){
+		if (touchTimes <= 0) {
+			//	Destroy (RandomBox,.5f);
+			transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 10f);
+		}
 
 
 	}
-		
+
 	void OnMouseDown(){
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
 
 		Physics.Raycast (ray, out hit);
-		if(hit.collider.gameObject == gameObject){
+		if(hit.collider.gameObject == RandomBox){
 
 			if ( !AlreadyPaid && InititalTotalMoney >= prizeForOneTime) {
 				int AfterTotalMoney = InititalTotalMoney - prizeForOneTime;
@@ -53,10 +58,10 @@ public class CrackRandomBox : MonoBehaviour {
 				print ("NotEnoughMoney");
 			}
 
-			if (touchTimes <= 0) {
-				Destroy (gameObject);
-				//transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 10f);
-			}
+		/*	if (touchTimes <= 0) {
+			//	Destroy (RandomBox,.5f);
+				transform.localScale = Vector3.Lerp(transform.localScale, Vector3.zero, Time.deltaTime * 10f);
+			}*/
 
 		}
 	}
